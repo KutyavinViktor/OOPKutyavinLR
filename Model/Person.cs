@@ -50,6 +50,7 @@ namespace Model
             }
             set
             {
+                //TODO: 
                 _ = DefinitionLanguage(value);
                 _name = ChangeRegister(value);
 
@@ -76,6 +77,7 @@ namespace Model
             }
             set
             {
+                //TODO: 
                 _ = DefinitionLanguage(value);
                 _surname = ChangeRegister(value);
 
@@ -200,7 +202,7 @@ namespace Model
             return new Person(randomName, randomSurname, randomAge, randomGender);
         }
 
-
+        //TODO: rename
         /// <summary>
         /// Метод, проверяющий строку на язык.
         /// </summary>
