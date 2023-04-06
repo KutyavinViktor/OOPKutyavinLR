@@ -248,6 +248,7 @@ namespace Model
             }
         }
 
+        //TODO: RSDN
         /// <summary>
         /// Проверка имени и фамилии на одинаковый язык
         /// </summary>
