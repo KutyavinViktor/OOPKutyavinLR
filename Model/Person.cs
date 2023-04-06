@@ -51,12 +51,12 @@ namespace Model
             set
             {
                 //TODO: 
-                _ = DefinitionLanguage(value);
+                ChekingSamenessLanguage(value);
                 _name = ChangeRegister(value);
 
                 if (_name != null)
                 {
-                    CheckToLanguage();
+                    CheckToLanguage(_name, _surname);
                 }
                 else
                 {
@@ -67,7 +67,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Ввод фамили человека.
+        /// Ввод фамилии человека.
         /// </summary>
         public string Surname
         {
@@ -78,12 +78,17 @@ namespace Model
             set
             {
                 //TODO: 
-                _ = DefinitionLanguage(value);
+                ChekingSamenessLanguage(value);
                 _surname = ChangeRegister(value);
 
                 if (_surname != null)
                 {
-                    CheckToLanguage();
+                    CheckToLanguage(_name, _surname);
+                }
+                else
+                {
+                    throw new NullReferenceException
+                        ("Фамилия не должно быть пустой");
                 }
             }
         }
@@ -106,7 +111,7 @@ namespace Model
                 else
                 {
                     throw new IndexOutOfRangeException("Возраст человека" +
-                    $" должен находится в диапазоне от {MinAge} до" +
+                    $" должен находиться в диапазоне от {MinAge} до" +
                     $" {MaxAge} лет");
                 }
             }
@@ -204,7 +209,7 @@ namespace Model
 
         //TODO: rename
         /// <summary>
-        /// Метод, проверяющий строку на язык.
+        /// Метод, определяющий и возвращающий язык
         /// </summary>
         /// <param name="str">Строка.</param>
         /// <returns>Язык передаваемой строки.</returns>
@@ -225,21 +230,29 @@ namespace Model
                 {
                     return Languages.Ru;
                 }
-                else
-                {
-                    throw new ArgumentException("Некоректный ввод. " +
-                        "Пожалуйста, используйте только" +
-                        " символы одного языка.");
-                }
             }
             return Languages.Unknown;
+        }
+
+        /// <summary>
+        /// Метод соответствия языка в имени и фамилии
+        /// </summary>
+        /// <param name="str">Имя и фамилия</param>
+        private void ChekingSamenessLanguage(string str)
+        {
+            if (DefinitionLanguage(str) == Languages.Unknown)
+            {
+                throw new ArgumentException("Некоректный ввод. " +
+                        "Пожалуйста, используйте только" +
+                        " символы одного языка.");
+            }
         }
 
         /// <summary>
         /// Проверка имени и фамилии на одинаковый язык
         /// </summary>
         /// <exception cref="FormatException"></exception>
-        private void CheckToLanguage()
+        private void CheckToLanguage(string Name, string Surname)
         {
             if (!string.IsNullOrEmpty(Name)
                 && !string.IsNullOrEmpty(Surname))

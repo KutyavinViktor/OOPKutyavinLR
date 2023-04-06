@@ -200,7 +200,7 @@ namespace Model
                         || exception.GetType() == typeof(ArgumentException))
                     {
                         Console.WriteLine($"\nОшибка!!! {exception.Message}" +
-                            $" Повторите ввод заного.\n");
+                            $" Повторите ввод заново.\n");
                     }
                     else
                     {
