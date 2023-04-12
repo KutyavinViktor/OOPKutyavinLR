@@ -50,7 +50,7 @@ namespace Model
             }
             set
             {
-                //TODO:
+                //TODO: дублирование
                 CheckString(value);
                 ChekingSamenessLanguage(value);
                 string tmpName = ChangeRegister(value);
@@ -78,7 +78,7 @@ namespace Model
             }
             set
             {
-                //TODO: 
+                //TODO: дублирование
                 CheckString(value);
                 ChekingSamenessLanguage(value);
                 string tmpSurname = ChangeRegister(value);
@@ -113,8 +113,8 @@ namespace Model
                 else
                 {
                     throw new IndexOutOfRangeException("Возраст человека" +
-                    $" должен находиться в диапазоне от {MinAge} до" +
-                    $" {MaxAge} лет");
+                        $" должен находиться в диапазоне от {MinAge} до" +
+                        $" {MaxAge} лет");
                 }
             }
         }
@@ -226,7 +226,6 @@ namespace Model
             }
         }
 
-        //TODO: rename
         /// <summary>
         /// Метод, определяющий и возвращающий язык
         /// </summary>
