@@ -50,13 +50,14 @@ namespace Model
             }
             set
             {
-                //TODO: 
+                //TODO:
+                CheckString(value);
                 ChekingSamenessLanguage(value);
-                _name = ChangeRegister(value);
-
-                if (_name != null)
+                string tmpName = ChangeRegister(value);
+                if (tmpName != null)
                 {
-                    CheckToLanguage(_name, _surname);
+                    CheckToLanguage(tmpName, _surname);
+                    _name = tmpName;
                 }
                 else
                 {
@@ -78,17 +79,18 @@ namespace Model
             set
             {
                 //TODO: 
+                CheckString(value);
                 ChekingSamenessLanguage(value);
-                _surname = ChangeRegister(value);
-
-                if (_surname != null)
+                string tmpSurname = ChangeRegister(value);
+                if (tmpSurname != null)
                 {
-                    CheckToLanguage(_name, _surname);
+                    CheckToLanguage(_name, tmpSurname);
+                    _surname = tmpSurname;
                 }
                 else
                 {
                     throw new NullReferenceException
-                        ("Фамилия не должно быть пустой");
+                        ("Фамилия не должна быть пустой");
                 }
             }
         }
@@ -207,26 +209,43 @@ namespace Model
             return new Person(randomName, randomSurname, randomAge, randomGender);
         }
 
+        /// <summary>
+        /// Проверка введённых слов пользователем
+        /// </summary>
+        /// <param name="value">введённое имя/фамилия.</param>
+        /// <returns>return имя/фамлию.</returns>
+        /// <exception cref="ArgumentException">error output.</exception>
+        private void CheckString(string value)
+        {
+            Regex word = new(@"(^[А-яA-z]*(-)?[А-яA-z]*$)");
+
+            if (!word.IsMatch(value))
+            {
+                throw new ArgumentException("Разрешено вводить только" +
+                    " буквы и один дефис.");
+            }
+        }
+
         //TODO: rename
         /// <summary>
         /// Метод, определяющий и возвращающий язык
         /// </summary>
-        /// <param name="str">Строка.</param>
+        /// <param name="word">Строка.</param>
         /// <returns>Язык передаваемой строки.</returns>
-        private static Languages DefinitionLanguage(string str)
+        private static Languages DefinitionLanguage(string word)
         {
-            var ruLanguage = new Regex
-                (@"^[A-z]+(-)?[A-z]*$");
             var engLanguage = new Regex
+                (@"^[A-z]+(-)?[A-z]*$");
+            var ruLanguage = new Regex
                 (@"^[А-я]+(-)?[А-я]*$");
 
-            if (string.IsNullOrEmpty(str) == false)
+            if (string.IsNullOrEmpty(word) == false)
             {
-                if (engLanguage.IsMatch(str))
+                if (engLanguage.IsMatch(word))
                 {
                     return Languages.Eng;
                 }
-                else if (ruLanguage.IsMatch(str))
+                if (ruLanguage.IsMatch(word))
                 {
                     return Languages.Ru;
                 }
@@ -237,10 +256,10 @@ namespace Model
         /// <summary>
         /// Метод соответствия языка в имени и фамилии
         /// </summary>
-        /// <param name="str">Имя и фамилия</param>
-        private void ChekingSamenessLanguage(string str)
+        /// <param name="word">Имя и фамилия</param>
+        private void ChekingSamenessLanguage(string word)
         {
-            if (DefinitionLanguage(str) == Languages.Unknown)
+            if (DefinitionLanguage(word) == Languages.Unknown)
             {
                 throw new ArgumentException("Некоректный ввод. " +
                         "Пожалуйста, используйте только" +
@@ -253,13 +272,13 @@ namespace Model
         /// Проверка имени и фамилии на одинаковый язык
         /// </summary>
         /// <exception cref="FormatException"></exception>
-        private void CheckToLanguage(string Name, string Surname)
+        private void CheckToLanguage(string name, string surname)
         {
-            if (!string.IsNullOrEmpty(Name)
-                && !string.IsNullOrEmpty(Surname))
+            if (!string.IsNullOrEmpty(name)
+                && !string.IsNullOrEmpty(surname))
             {
-                var nameLanguage = DefinitionLanguage(Name);
-                var surnameLanguage = DefinitionLanguage(Surname);
+                var nameLanguage = DefinitionLanguage(name);
+                var surnameLanguage = DefinitionLanguage(surname);
 
                 if (nameLanguage != surnameLanguage)
                 {
@@ -274,12 +293,12 @@ namespace Model
         /// Первая буква - заглавная;
         /// Остальные - строчные.
         /// </summary>
-        /// <param name="str">Строка (имя или фамилия).</param>
+        /// <param name="word">Строка (имя или фамилия).</param>
         /// <returns>Строка с преобразованным регистром.</returns>
-        private static string ChangeRegister(string str)
+        private static string ChangeRegister(string word)
         {
             return CultureInfo.CurrentCulture.TextInfo.
-                ToTitleCase(str.ToLower());
+                ToTitleCase(word.ToLower());
         }
     }
 }
