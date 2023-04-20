@@ -78,7 +78,6 @@ namespace Model
             }
             set
             {
-                //TODO: дублирование
                 _name = CheckingNameSurname(value, _surname);
             }
         }
@@ -94,7 +93,6 @@ namespace Model
             }
             set
             {
-                //TODO: дублирование
                 _surname = CheckingNameSurname(value, _name);
             }
         }
@@ -270,11 +268,12 @@ namespace Model
             }
         }
 
-        //TODO: RSDN
         /// <summary>
         /// Проверка имени и фамилии на одинаковый язык
         /// </summary>
-        /// <exception cref="FormatException"></exception>
+        /// <param name="name">//TODO: XML</param>
+        /// <param name="surname">//TODO: XML</param>
+        /// <exception cref="FormatException">Проверка имени и фамилии на одинаковый язык</exception>
         private void CheckToLanguage(string name, string surname)
         {
             if (!string.IsNullOrEmpty(name)
