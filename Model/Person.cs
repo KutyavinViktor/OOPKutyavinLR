@@ -43,11 +43,13 @@ namespace Model
         /// Метод проверок ввода имени и фамилии
         /// </summary>
         /// <param name="value"></param>
-        private void CheckingNameSurname(string value)
+        private string CheckingNameSurname(string value)
         {
             CheckNull(value);
             CheckString(value);
             ChekingSamenessLanguage(value);
+            CheckToLanguage(_name, value);
+            return ChangeRegister(value);
         }
 
         /// <summary>
@@ -76,9 +78,7 @@ namespace Model
             set
             {
                 //TODO: дублирование
-                CheckingNameSurname(value);
-                CheckToLanguage(value, _surname);
-                _name = ChangeRegister(value);
+                _name = CheckingNameSurname(value);
             }
         }
 
@@ -94,9 +94,7 @@ namespace Model
             set
             {
                 //TODO: дублирование
-                CheckingNameSurname(value);
-                CheckToLanguage(_name, value);
-                _surname = ChangeRegister(value);
+                _surname = CheckingNameSurname(value);
             }
         }
 
