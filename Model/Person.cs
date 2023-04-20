@@ -43,12 +43,12 @@ namespace Model
         /// Метод проверок ввода имени и фамилии
         /// </summary>
         /// <param name="value"></param>
-        private string CheckingNameSurname(string value)
+        private string CheckingNameSurname(string value, string comparison)
         {
             CheckNull(value);
             CheckString(value);
             ChekingSamenessLanguage(value);
-            CheckToLanguage(_name, value);
+            CheckToLanguage(value, comparison);
             return ChangeRegister(value);
         }
 
@@ -58,6 +58,7 @@ namespace Model
         /// <param name="value"></param>
         /// <exception cref="NullReferenceException"></exception>
         private void CheckNull(string value)
+
         {
             if (value == null)
             {
@@ -78,7 +79,7 @@ namespace Model
             set
             {
                 //TODO: дублирование
-                _name = CheckingNameSurname(value);
+                _name = CheckingNameSurname(value, _surname);
             }
         }
 
@@ -94,7 +95,7 @@ namespace Model
             set
             {
                 //TODO: дублирование
-                _surname = CheckingNameSurname(value);
+                _surname = CheckingNameSurname(value, _name);
             }
         }
 
