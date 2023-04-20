@@ -13,6 +13,7 @@ namespace Model
         /// </summary>
         private static void Main()
         {
+            Console.WriteLine("Нажмите любую клавишу");
             //Добавление первых трёх игроков в список CSKA
             var listCska = new PersonList();
             var legend = new Person("Igor", "Akinfeev", 36, Gender.Male);
@@ -197,7 +198,8 @@ namespace Model
                     if (exception.GetType()
                         == typeof(IndexOutOfRangeException)
                         || exception.GetType() == typeof(FormatException)
-                        || exception.GetType() == typeof(ArgumentException))
+                        || exception.GetType() == typeof(ArgumentException)
+                        || exception.GetType() == typeof(NullReferenceException))
                     {
                         Console.WriteLine($"\nОшибка!!! {exception.Message}" +
                             $" Повторите ввод заново.\n");

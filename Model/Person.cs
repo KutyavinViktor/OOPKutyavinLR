@@ -40,6 +40,31 @@ namespace Model
         private const int MaxAge = 100;
 
         /// <summary>
+        /// Метод проверок ввода имени и фамилии
+        /// </summary>
+        /// <param name="value"></param>
+        private void CheckingNameSurname(string value)
+        {
+            CheckNull(value);
+            CheckString(value);
+            ChekingSamenessLanguage(value);
+        }
+
+        /// <summary>
+        /// Проверка на пустой ввод имни и фамилии
+        /// </summary>
+        /// <param name="value"></param>
+        /// <exception cref="NullReferenceException"></exception>
+        private void CheckNull(string value)
+        {
+            if (value == null)
+            {
+                throw new NullReferenceException
+                    ("Вы ничего не ввели.");
+            }
+        }
+
+        /// <summary>
         /// Ввод имени человека.
         /// </summary>
         public string Name
@@ -51,19 +76,9 @@ namespace Model
             set
             {
                 //TODO: дублирование
-                CheckString(value);
-                ChekingSamenessLanguage(value);
-                string tmpName = ChangeRegister(value);
-                if (tmpName != null)
-                {
-                    CheckToLanguage(tmpName, _surname);
-                    _name = tmpName;
-                }
-                else
-                {
-                    throw new NullReferenceException
-                        ("Имя не должно быть пустым");
-                }
+                CheckingNameSurname(value);
+                CheckToLanguage(value, _surname);
+                _name = ChangeRegister(value);
             }
         }
 
@@ -79,19 +94,9 @@ namespace Model
             set
             {
                 //TODO: дублирование
-                CheckString(value);
-                ChekingSamenessLanguage(value);
-                string tmpSurname = ChangeRegister(value);
-                if (tmpSurname != null)
-                {
-                    CheckToLanguage(_name, tmpSurname);
-                    _surname = tmpSurname;
-                }
-                else
-                {
-                    throw new NullReferenceException
-                        ("Фамилия не должна быть пустой");
-                }
+                CheckingNameSurname(value);
+                CheckToLanguage(_name, value);
+                _surname = ChangeRegister(value);
             }
         }
 
