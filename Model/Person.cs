@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace Model
 {
+    //TODO: file naming
     /// <summary>
     /// Класс описывающий человека.
     /// </summary>
@@ -55,13 +56,14 @@ namespace Model
         /// <summary>
         /// Проверка на пустой ввод имни и фамилии
         /// </summary>
-        /// <param name="value"></param>
-        /// <exception cref="NullReferenceException"></exception>
+        /// <param name="value">//TODO: XML</param>
+        /// <exception cref="NullReferenceException">//TODO: XML</exception>
         private void CheckNull(string value)
 
         {
             if (value == null)
             {
+                //TODO: переписать информационную строку
                 throw new NullReferenceException
                     ("Вы ничего не ввели.");
             }
