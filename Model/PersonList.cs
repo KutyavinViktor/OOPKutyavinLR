@@ -7,9 +7,9 @@ namespace Model
     public class PersonList
     {
         /// <summary>
-        /// Список из объектов класса Person
+        /// Список из объектов класса PersonBase
         /// </summary>
-        private List<Person> _listOfPersons = new List<Person>();
+        private List<PersonBase> _listOfPersons = new List<PersonBase>();
 
         /// <summary>
         /// Количество людей в списке
@@ -19,8 +19,8 @@ namespace Model
         /// <summary>
         /// Метод, который добавляет человека в список людей.
         /// </summary>
-        /// <param name="person">Объект класса Person</param>
-        public void AddPerson(Person person)
+        /// <param name="person">Объект класса PersonBase</param>
+        public void AddPerson(PersonBase person)
         {
             _listOfPersons.Add(person);
         }
@@ -28,9 +28,9 @@ namespace Model
         /// <summary>
         /// Метод, который удаляет указанного человека из списка людей.
         /// </summary>
-        /// <param name="person">Объект класса Person.</param>
+        /// <param name="person">Объект класса PersonBase.</param>
         /// Пустой список людей.</exception>
-        public void DeletePerson(Person person)
+        public void DeletePerson(PersonBase person)
         {
             _ = _listOfPersons.RemoveAll(_listOfPersons => _listOfPersons == person);
         }
@@ -39,9 +39,9 @@ namespace Model
         /// Метод, который находит индексы указанного человека
         /// в списке людей.
         /// </summary>
-        /// <param name="person">Объект класса Person.</param>
+        /// <param name="person">Объект класса PersonBase.</param>
         /// <returns></returns>
-        public List<int> FindIndexesOfPerson(Person person)
+        public List<int> FindIndexesOfPerson(PersonBase person)
         {
             List<int> listOfIndexes = new List<int>();
 
@@ -70,8 +70,8 @@ namespace Model
         /// Метод, который находит человека в списке людей по индексу
         /// </summary>
         /// <param name="index">Индекс человека в списке.</param>
-        /// <returns>Объект класса Person.</returns>
-        public Person FindPersonByIndex(int index)
+        /// <returns>Объект класса PersonBase.</returns>
+        public PersonBase FindPersonByIndex(int index)
         {
             IsIndexInArray(index);
 

@@ -7,7 +7,7 @@ namespace Model
     /// <summary>
     /// Класс описывающий человека.
     /// </summary>
-    public class Person
+    public abstract class PersonBase
     {
         /// <summary>
         /// Имя человека.
@@ -32,12 +32,12 @@ namespace Model
         /// <summary>
         /// Минимальный возраст человека.
         /// </summary>
-        private const int MinAge = 0;
+        protected const int MinAge = 0;
 
         /// <summary>
         /// Максимальный возраст человека.
         /// </summary>
-        private const int MaxAge = 100;
+        protected const int MaxAge = 100;
 
         /// <summary>
         /// Метод проверок ввода имени и фамилии
@@ -102,22 +102,11 @@ namespace Model
         /// </summary>
         public int Age
         {
-            get
-            {
-                return _age;
-            }
+            get => _age;
             set
             {
-                if (value > MinAge && value < MaxAge)
-                {
-                    _age = value;
-                }
-                else
-                {
-                    throw new IndexOutOfRangeException("Возраст человека" +
-                        $" должен находиться в диапазоне от {MinAge} до" +
-                        $" {MaxAge} лет");
-                }
+                CheckAge(value);
+                _age = value;
             }
         }
 
@@ -143,7 +132,7 @@ namespace Model
         /// <param name="surname">Фамилия человека.</param>
         /// <param name="age">Возраст человека.</param>
         /// <param name="gender">Пол человека.</param>
-        public Person(string name, string surname, int age, Gender gender)
+        public PersonBase(string name, string surname, int age, Gender gender)
         {
             Name = name;
             Surname = surname;
@@ -154,7 +143,7 @@ namespace Model
         /// <summary>
         /// Конструктор по умолчанию
         /// </summary>
-        public Person()
+        public PersonBase()
         {
         }
 
@@ -166,49 +155,6 @@ namespace Model
         public string PrintPerson()
         {
             return $"{Name} {Surname}; Возраст - {Age}; Пол - {Gender}";
-        }
-
-        /// <summary>
-        /// Метод для генерации человека со случайными  именем, фамилией,
-        /// возрастом и полом. 
-        /// </summary>
-        /// <returns>Объект Person cо случайными значениями атрибутов имя,
-        /// фамилия, возраст и пол.</returns>
-        public static Person GetRandomAvenger()
-        {
-            string[] maleNames =
-            {
-                "Anton", "Danil", "Pavel", "Ruslan", "Roman"
-            };
-
-            string[] femaleNames =
-            {
-                "Olya", "Natasha", "Vera", "Marina", "Ira",
-            };
-
-            string[] surnames =
-            {
-                "Zobnin", "Prutsev", "Zinkovsky", "Denisov", "Hlusevich",
-                "Balde", "Meleshin", "Selihov", "Maksimenko", "Sobolev"
-            };
-
-            var randPerson = new Random();
-
-
-            //Генерация случайной личности.
-            Gender randomGender = randPerson.Next(0, 2) == 0
-                ? Gender.Male
-                : Gender.Female;
-
-            string randomName = randomGender == Gender.Male
-                ? maleNames[randPerson.Next(maleNames.Length)]
-                : femaleNames[randPerson.Next(femaleNames.Length)];
-
-            var randomSurname = surnames[randPerson.Next(surnames.Length)];
-
-            var randomAge = randPerson.Next(MinAge, MaxAge);
-
-            return new Person(randomName, randomSurname, randomAge, randomGender);
         }
 
         /// <summary>
@@ -271,9 +217,9 @@ namespace Model
         /// <summary>
         /// Проверка имени и фамилии на одинаковый язык
         /// </summary>
-        /// <param name="name">//TODO: XML</param>
-        /// <param name="surname">//TODO: XML</param>
-        /// <exception cref="FormatException">Проверка имени и фамилии на одинаковый язык</exception>
+        /// <param name="name">Имя</param>
+        /// <param name="surname">Фамилия</param>
+        /// <exception cref="FormatException"></exception>
         private void CheckToLanguage(string name, string surname)
         {
             if (!string.IsNullOrEmpty(name)
@@ -302,5 +248,26 @@ namespace Model
             return CultureInfo.CurrentCulture.TextInfo.
                 ToTitleCase(word.ToLower());
         }
+
+        /// <summary>
+        /// Метод, формирует информацию о человеке.
+        /// </summary>
+        public abstract string GetInfo();
+
+        /// <summary>
+        /// Метод преобразует значения полей имени и фамилии
+        /// в строковый формат.
+        /// </summary>
+        /// <returns>Фамилия и имя человека.</returns>
+        public string GetNameSurname()
+        {
+            return $"{Name} {Surname}";
+        }
+
+        /// <summary>
+        /// Проверка возраста человека.
+        /// </summary>
+        /// <param name="age">Возраст человека.</param>
+        protected abstract void CheckAge(int age);
     }
 }
