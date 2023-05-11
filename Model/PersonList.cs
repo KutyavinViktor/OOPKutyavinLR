@@ -6,9 +6,7 @@ namespace Model
     /// </summary>
     public class PersonList
     {
-        /// <summary>
-        /// Список из объектов класса PersonBase
-        /// </summary>
+
         private List<PersonBase> _listOfPersons = new List<PersonBase>();
 
         /// <summary>
