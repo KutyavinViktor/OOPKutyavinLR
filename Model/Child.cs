@@ -88,7 +88,6 @@ namespace Model
         private static void CheckParentGender
             (Adult parent, Gender gender)
         {
-            // На null нужно проверять отдельно
             if (parent != null && parent.Gender != gender)
             {
                 throw new ArgumentException
@@ -109,7 +108,6 @@ namespace Model
                 ? Mother.GetNameSurname()
                 : "Информации о матери нет";
 
-            // Тернарные выражения
             var schoolStatus = "Не обучается";
             if (!string.IsNullOrEmpty(School))
             {
@@ -189,7 +187,7 @@ namespace Model
         /// <returns>Объект класса Adult.</returns>
         /// <exception cref="ArgumentException">
         /// Ожидается ввод цифры 1 или 2.</exception>
-        public static Adult GetRandomParent(Gender gender)
+        private static Adult GetRandomParent(Gender gender)
         {
             var random = new Random();
             var parentStatus = random.Next(1, 3);
@@ -203,7 +201,7 @@ namespace Model
         /// <param name="age">Возраст ребенка.</param>
         /// <exception cref="IndexOutOfRangeException">Возраст не входит
         /// в допустимый диапазон.</exception>
-        protected override void CheckAge(int age)
+        public override void CheckAge(int age)
         {
             if (age is < MinAge or > MaxAge)
             {
@@ -223,7 +221,7 @@ namespace Model
 
             string[] grades =
             {
-                "3", "4", "5"
+                "Ladno", "3", "4", "5"
             };
 
             var preferredHouse = grades[rnd.Next(grades.Length)];

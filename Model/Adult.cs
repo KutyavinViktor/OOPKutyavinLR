@@ -136,17 +136,9 @@ namespace Model
             var randomAge = random.Next(MinAge, MaxAge);
 
             //TODO: duplication
-            string randomSeriesPassport = "";
-            for (int i = 0; i < 4; i++)
-            {
-                randomSeriesPassport += random.Next(1, 10).ToString();
-            }
-            //TODO: duplication
-            string randomNumberPassport = "";
-            for (int i = 0; i < 6; i++)
-            {
-                randomNumberPassport += random.Next(1, 10).ToString();
-            }
+
+            string randomSeriesPassport = NumberDigits(4);
+            string randomNumberPassport = NumberDigits(6);
 
             var randomPassport = $"{randomSeriesPassport} " +
                                  $"{randomNumberPassport}";
@@ -177,13 +169,25 @@ namespace Model
                 randomPassport, randomHuman, randomWorkPlace);
         }
 
+        public string NumberDigits(int numberDigits)
+        {
+            string seriesOrNumer = "";
+            Random random = new Random();
+            for (int i = 0; i < numberDigits; i++)
+            {
+                seriesOrNumer += random.Next(1, 10).ToString();
+
+            }
+            return seriesOrNumer;
+        }
+
         /// <summary>
         /// Метод проверяет допустимость возраста.
         /// </summary>
         /// <param name="age">Возраст взрослого человека.</param>
         /// <exception cref="IndexOutOfRangeException">Возраст должен
         /// находится в определнных пределах.</exception>
-        protected override void CheckAge(int age)
+        public override void CheckAge(int age)
         {
             if (age is < MinAge or > MaxAge)
             {

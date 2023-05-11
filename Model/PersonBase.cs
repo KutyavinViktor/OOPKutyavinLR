@@ -54,10 +54,10 @@ namespace Model
         }
 
         /// <summary>
-        /// Проверка на пустой ввод имни и фамилии
+        /// Проверка на пустую строку
         /// </summary>
-        /// <param name="value">//TODO: XML</param>
-        /// <exception cref="NullReferenceException">//TODO: XML</exception>
+        /// <param name="value">Подаваемая строка</param>
+        /// <exception cref="NullReferenceException">Пустая строка</exception>
         private void CheckNull(string value)
 
         {
@@ -65,7 +65,7 @@ namespace Model
             {
                 //TODO: переписать информационную строку
                 throw new NullReferenceException
-                    ("Вы ничего не ввели.");
+                    ("Пустая строка.");
             }
         }
 
@@ -270,6 +270,9 @@ namespace Model
         /// Проверка возраста человека.
         /// </summary>
         /// <param name="age">Возраст человека.</param>
-        protected abstract void CheckAge(int age);
+        public virtual void CheckAge(int age)
+        {
+
+        }
     }
 }
