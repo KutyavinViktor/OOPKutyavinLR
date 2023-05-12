@@ -16,7 +16,8 @@ namespace Model
         /// </summary>
         /// <param name="number">путь и расход топлива</param>
         /// <returns>путь и расход топлива</returns>
-        /// <exception cref="Exception">Исключение</exception>
+        /// <exception cref="Exception">В случае введения
+        /// отрицательного числа произойдет вывод исключения</exception>
         public static double CheckPositiveNumber(double number)
         {
             return number < 0
