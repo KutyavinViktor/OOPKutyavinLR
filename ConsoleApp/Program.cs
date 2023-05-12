@@ -8,68 +8,179 @@ namespace Model
     /// </summary>
     internal class Program
     {
-        /// <summary>
+        /// <summary> 
         /// Класс Main
         /// </summary>
-        private static void Main()
+        private static void Main(string[] args)
         {
-            Console.WriteLine("Если хоите добавить 7 случайных человек в " +
-                "список, нажмите любую клавишу\n");
-            var listPeople = new PersonList();
-            var rrandom = new Random();
-
-            for (var i = 0; i < 7; i++)
+            Console.WriteLine("Здравствуйте, выберите " +
+                "вид транспорта для покупки:");
+            while (true)
             {
-                PersonBase randomPerson = rrandom.Next(2) == 0
-                    ? Adult.GetRandomPerson()
-                    : Child.GetRandomPerson();
-                listPeople.AddPerson(randomPerson);
-            }
+                Console.WriteLine("\n1 - Машина" +
+                "\n2 - Машина-гибрид" +
+                "\n3 - Вертолёт" +
+                "\n4 - Завершить выбор");
 
-            _ = Console.ReadKey();
-
-            Console.WriteLine("Информация о сгенерированных людях:\n");
-            PrintList(listPeople);
-
-            Console.WriteLine("Для вывода дополнительной информации " +
-                "о 4 человеке, нажмите любую клавишу\n");
-            _ = Console.ReadKey();
-
-            Console.Write("Дополнительная информация о 4 человеке: ");
-            var person = listPeople.FindPersonByIndex(3);
-
-            switch (person)
-            {
-                case Adult personAdult:
-                    Console.WriteLine(personAdult.GetPosition());
-                    break;
-                case Child personChild:
-                    Console.WriteLine(personChild.GetGrade());
-                    break;
-                default:
-                    break;
+                Console.Write("\nВведите цифру из представленного " +
+                    "списка: ");
+                var consoleKey = Console.ReadLine();
+                switch (consoleKey)
+                {
+                    case "1":
+                        {
+                            Console.WriteLine("\tРасчёт для автомобиля");
+                            PrintWages(SpentFuelCar());
+                            break;
+                        }
+                    case "2":
+                        {
+                            Console.WriteLine("\tРасчёт для автомобиля-" +
+                                "гибрида");
+                            PrintWages(SpentFuelCarHybrid());
+                            break;
+                        }
+                    case "3":
+                        {
+                            Console.WriteLine("\tРасчёт для вертолёта");
+                            PrintWages(SpentFuelHelicopter());
+                            break;
+                        }
+                    case "4":
+                        {
+                            Environment.Exit(4);
+                            break;
+                        }
+                    default:
+                        {
+                            Console.WriteLine("Попробуйте еще раз");
+                        }
+                        break;
+                }
             }
         }
 
         /// <summary>
-        /// Метод, который выводит в консоль информацию о каждом человеке 
-        /// в списке людей.
+        /// Ввод данных для расчёта затраченного топлива
+        /// машиной
         /// </summary>
-        /// <param name="personList">Экземпляр класса PersonList.</param>
-        private static void PrintList(PersonList personList)
+        /// <returns>данные о затраченном топливе</returns>
+        public static Car SpentFuelCar()
         {
-            if (personList.CountPersons != 0)
+            Car car = new Car();
+            var actions = new List<Action>()
             {
-                for (int i = 0; i < personList.CountPersons; i++)
+                new Action(() =>
                 {
-                    var tmpPerson = personList.FindPersonByIndex(i);
-                    Console.WriteLine(tmpPerson.GetInfo());
+                    Console.Write("Расстояние, пройденное " +
+                        "автомобилем: ");
+                    car.Distance = ParseConsoleString();
+                }),
+                new Action(() =>
+                {
+                    Console.Write("Расход бензина на км: ");
+                    car.FuelConsumptionPerKm = ParseConsoleString();
+                })
+            };
+            actions.ForEach(SetInformationFromConsole);
+            return car;
+        }
+
+        /// <summary>
+        /// Ввод данных для расчёта затраченного топлива
+        /// машиной-гибридом
+        /// </summary>
+        /// <returns>данные о затраченном топливе</returns>
+        public static HybridCar SpentFuelCarHybrid()
+        {
+            HybridCar hybridcar = new HybridCar();
+            var actions = new List<Action>()
+            {
+                new Action(() =>
+                {
+                    Console.Write("Расстояние, пройденное " +
+                        "автомобилем-гибридом: ");
+                    hybridcar.Distance = ParseConsoleString();
+                }),
+                new Action(() =>
+                {
+                    Console.Write("Расход бензина на км: ");
+                    hybridcar.FuelConsumptionPerKm = ParseConsoleString();
+                })
+            };
+            actions.ForEach(SetInformationFromConsole);
+            return hybridcar;
+        }
+
+        /// <summary>
+        /// Ввод данных для расчёта затраченного топлива
+        /// вертолётом
+        /// </summary>
+        /// <returns>данные о затраченном топливе</returns>
+        public static Helicopter SpentFuelHelicopter()
+        {
+            Helicopter helicopter = new Helicopter();
+            var actions = new List<Action>()
+            {
+                new Action(() =>
+                {
+                    Console.Write("Расстояние, пройденное " +
+                        "вертолётом: ");
+                    helicopter.Distance = ParseConsoleString();
+                }),
+                new Action(() =>
+                {
+                    Console.Write("Расход керосина на км: ");
+                    helicopter.FuelConsumptionPerKm = ParseConsoleString();
+                }),
+                new Action(() =>
+                {
+                    Console.Write("Масса перевозимого груза, т: ");
+                    helicopter.CargoWeight = ParseConsoleString();
+                })
+            };
+            actions.ForEach(SetInformationFromConsole);
+            return helicopter;
+        }
+
+        /// <summary>
+        /// Чтение информации с консоли
+        /// </summary>
+        /// <returns>введенное слово</returns>
+        public static double ParseConsoleString()
+        {
+            return double.Parse(Console.ReadLine().Replace('.', ','));
+        }
+
+        /// <summary>
+        /// Вывод полученной информации на консоль
+        /// </summary>
+        /// <param name="value">затраченное топливо</param>
+        public static void PrintWages(VehiclesBase value)
+        {
+            Console.WriteLine($"Объём затраченного топлива: " +
+                $" {value.SpentFuel()} литров.");
+        }
+
+        /// <summary>
+        /// Проверка введенной информации
+        /// </summary>
+        /// <param name="action">делегат</param>
+        public static void SetInformationFromConsole(Action action)
+        {
+            while (true)
+            {
+                try
+                {
+                    action.Invoke();
+                    return;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"\n{e.Message}\n");
                 }
             }
-            else
-            {
-                Console.WriteLine("Список пуст");
-            }
         }
+
     }
 }
