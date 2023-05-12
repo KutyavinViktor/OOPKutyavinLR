@@ -11,7 +11,7 @@ namespace Model
         /// <summary> 
         /// Класс Main
         /// </summary>
-        private static void Main(string[] args)
+        private static void Main()
         {
             Console.WriteLine("Здравствуйте, выберите " +
                 "вид транспорта для покупки:");
@@ -143,6 +143,7 @@ namespace Model
             return helicopter;
         }
 
+        // TODO: Упадет, если ввести текст (не число)
         /// <summary>
         /// Чтение информации с консоли
         /// </summary>
@@ -162,6 +163,7 @@ namespace Model
                 $" {value.SpentFuel()} литров.");
         }
 
+        // TODO: Уточнить Exception
         /// <summary>
         /// Проверка введенной информации
         /// </summary>

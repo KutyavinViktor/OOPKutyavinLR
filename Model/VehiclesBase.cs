@@ -1,4 +1,4 @@
-
+// TODO: Общие атрибуты вынести в базовый класс
 namespace Model
 {
     /// <summary>
@@ -11,6 +11,7 @@ namespace Model
         /// </summary>
         public abstract double SpentFuel();
 
+        // TODO: Уточнить Exception
         /// <summary>
         /// Проверка на отрицательные числа
         /// </summary>
@@ -18,14 +19,13 @@ namespace Model
         /// <returns>путь и расход топлива</returns>
         /// <exception cref="Exception">В случае введения
         /// отрицательного числа произойдет вывод исключения</exception>
-        public static double CheckPositiveNumber(double number)
+        public double CheckPositiveNumber(double number)
         {
             return number < 0
                 ? throw new Exception("Ввелённые числа " +
                     "не могут быть отрицательными!")
                 : number;
         }
-
 
     }
 }
