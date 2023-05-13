@@ -7,6 +7,46 @@ namespace Model
     public abstract class VehiclesBase
     {
         /// <summary>
+        /// Расстояние в км
+        /// </summary>
+        protected double _distance;
+
+        /// <summary>
+        /// Расход топлива на км
+        /// </summary>
+        protected double _fuelConsumptionPerKm;
+
+        /// <summary>
+        /// Расстояние в км
+        /// </summary>
+        public double Distance
+        {
+            get
+            {
+                return _distance;
+            }
+            set
+            {
+                _distance = CheckPositiveNumber(value);
+            }
+        }
+
+        /// <summary>
+        /// Расход топлива на км
+        /// </summary>
+        public double FuelConsumptionPerKm
+        {
+            get
+            {
+                return _fuelConsumptionPerKm;
+            }
+            set
+            {
+                _fuelConsumptionPerKm = CheckPositiveNumber(value);
+            }
+        }
+
+        /// <summary>
         /// Вычисление затраченного топлива
         /// </summary>
         public abstract double SpentFuel();
@@ -17,12 +57,12 @@ namespace Model
         /// </summary>
         /// <param name="number">путь и расход топлива</param>
         /// <returns>путь и расход топлива</returns>
-        /// <exception cref="Exception">В случае введения
+        /// <exception cref="ArgumentOutOfRangeException">В случае введения
         /// отрицательного числа произойдет вывод исключения</exception>
         public double CheckPositiveNumber(double number)
         {
             return number < 0
-                ? throw new Exception("Ввелённые числа " +
+                ? throw new ArgumentOutOfRangeException("Введённые числа " +
                     "не могут быть отрицательными!")
                 : number;
         }

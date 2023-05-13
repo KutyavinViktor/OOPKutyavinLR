@@ -30,20 +30,20 @@ namespace Model
                     case "1":
                         {
                             Console.WriteLine("\tРасчёт для автомобиля");
-                            PrintWages(SpentFuelCar());
+                            PrintWages(EnteringCarData());
                             break;
                         }
                     case "2":
                         {
                             Console.WriteLine("\tРасчёт для автомобиля-" +
                                 "гибрида");
-                            PrintWages(SpentFuelCarHybrid());
+                            PrintWages(EnteringCarHybridData());
                             break;
                         }
                     case "3":
                         {
                             Console.WriteLine("\tРасчёт для вертолёта");
-                            PrintWages(SpentFuelHelicopter());
+                            PrintWages(EnteringHelicopterData());
                             break;
                         }
                     case "4":
@@ -65,7 +65,7 @@ namespace Model
         /// машиной
         /// </summary>
         /// <returns>данные о затраченном топливе</returns>
-        public static Car SpentFuelCar()
+        public static Car EnteringCarData()
         {
             Car car = new Car();
             var actions = new List<Action>()
@@ -91,7 +91,7 @@ namespace Model
         /// машиной-гибридом
         /// </summary>
         /// <returns>данные о затраченном топливе</returns>
-        public static HybridCar SpentFuelCarHybrid()
+        public static HybridCar EnteringCarHybridData()
         {
             HybridCar hybridcar = new HybridCar();
             var actions = new List<Action>()
@@ -117,7 +117,7 @@ namespace Model
         /// вертолётом
         /// </summary>
         /// <returns>данные о затраченном топливе</returns>
-        public static Helicopter SpentFuelHelicopter()
+        public static Helicopter EnteringHelicopterData()
         {
             Helicopter helicopter = new Helicopter();
             var actions = new List<Action>()
@@ -150,7 +150,12 @@ namespace Model
         /// <returns>введенное слово</returns>
         public static double ParseConsoleString()
         {
-            return double.Parse(Console.ReadLine().Replace('.', ','));
+            bool result = 
+                double.TryParse(Console.ReadLine().Replace('.', ','), 
+                out var number);
+            if (result != true)
+                throw new ArgumentException("Введите числовые значения!");
+            return number;
         }
 
         /// <summary>
@@ -177,7 +182,7 @@ namespace Model
                     action.Invoke();
                     return;
                 }
-                catch (Exception e)
+                catch (ArgumentOutOfRangeException e || ArgumentOutOfRangeException r)
                 {
                     Console.WriteLine($"\n{e.Message}\n");
                 }

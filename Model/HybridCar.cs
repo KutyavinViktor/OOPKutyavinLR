@@ -6,45 +6,24 @@ namespace Model
     /// </summary>
     public class HybridCar : VehiclesBase
     {
-        /// <summary>
-        /// Расстояние в км
-        /// </summary>
-        private double _distance;
 
         /// <summary>
-        /// Расход топлива на км
+        /// Коэффициент гибридности
         /// </summary>
-        private double _fuelConsumptionPerKm;
+        private double _coefficientOfHybridity;
 
         /// <summary>
-        /// Расстояние в км
+        /// Коэффициент гибридности
         /// </summary>
-        public double Distance
+        public double СoefficientOfHybridity
         {
             get
             {
-                return _distance;
+                return _coefficientOfHybridity;
             }
             set
             {
-                CheckPositiveNumber(value);
-                _distance = value;
-            }
-        }
-
-        /// <summary>
-        /// Расход топлива на км
-        /// </summary>
-        public double FuelConsumptionPerKm
-        {
-            get
-            {
-                return _fuelConsumptionPerKm;
-            }
-            set
-            {
-                CheckPositiveNumber(value);
-                _fuelConsumptionPerKm = value;
+                _coefficientOfHybridity = CheckPositiveNumber(value);
             }
         }
 
@@ -55,7 +34,8 @@ namespace Model
         /// <returns></returns>
         public override double SpentFuel()
         {
-            return 0.9 * _distance * _fuelConsumptionPerKm;
+            return _coefficientOfHybridity * _distance
+                * _fuelConsumptionPerKm;
         }
 
     }
