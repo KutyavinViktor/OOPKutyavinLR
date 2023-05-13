@@ -182,9 +182,15 @@ namespace Model
                     action.Invoke();
                     return;
                 }
-                catch (ArgumentOutOfRangeException e || ArgumentOutOfRangeException r)
+
+                catch (Exception exception)
                 {
-                    Console.WriteLine($"\n{e.Message}\n");
+                    if (exception.GetType()
+                        == typeof(ArgumentOutOfRangeException)
+                        || exception.GetType() == typeof(ArgumentException))
+                    {
+                        Console.WriteLine($"\n{exception.Message}\n");
+                    }
                 }
             }
         }
