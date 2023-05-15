@@ -106,6 +106,11 @@ namespace Model
                 {
                     Console.Write("Расход бензина на км: ");
                     hybridcar.FuelConsumptionPerKm = ParseConsoleString();
+                }),
+                new Action(() =>
+                {
+                    Console.Write("Коэффициент гибридности: ");
+                    hybridcar.СoefficientOfHybridity = ParseConsoleString();
                 })
             };
             actions.ForEach(SetInformationFromConsole);
