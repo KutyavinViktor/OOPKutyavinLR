@@ -153,6 +153,8 @@ namespace Model
         /// Чтение информации с консоли
         /// </summary>
         /// <returns>введенное слово</returns>
+        /// <exception cref="ArgumentException">В случае введения
+        /// строкового значения произойдет вывод исключения</exception>
         public static double ParseConsoleString()
         {
             bool result = 
