@@ -30,11 +30,10 @@ namespace Model
         /// <summary>
         /// Вычисление затраченного топлива
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Количество затраченного топлива.</returns>
         public override double SpentFuel()
         {
-            return _distance * _fuelConsumptionPerKm *
-                _cargoWeight;
+            return Distance * FuelConsumptionPerKm * CargoWeight;
         }
 
 

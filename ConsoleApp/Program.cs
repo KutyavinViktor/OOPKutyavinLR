@@ -1,7 +1,4 @@
-﻿using Model;
-using System;
-
-namespace Model
+﻿namespace Model
 {
     /// <summary>
     /// Класс Program
@@ -67,7 +64,7 @@ namespace Model
         /// <returns>данные о затраченном топливе</returns>
         public static Car EnteringCarData()
         {
-            Car car = new Car();
+            var car = new Car();
             var actions = new List<Action>()
             {
                 new Action(() =>
@@ -93,7 +90,7 @@ namespace Model
         /// <returns>данные о затраченном топливе</returns>
         public static HybridCar EnteringCarHybridData()
         {
-            HybridCar hybridcar = new HybridCar();
+            var hybridcar = new HybridCar();
             var actions = new List<Action>()
             {
                 new Action(() =>
@@ -124,7 +121,7 @@ namespace Model
         /// <returns>данные о затраченном топливе</returns>
         public static Helicopter EnteringHelicopterData()
         {
-            Helicopter helicopter = new Helicopter();
+            var helicopter = new Helicopter();
             var actions = new List<Action>()
             {
                 new Action(() =>
@@ -147,8 +144,7 @@ namespace Model
             actions.ForEach(SetInformationFromConsole);
             return helicopter;
         }
-
-        // TODO: Упадет, если ввести текст (не число)
+        
         /// <summary>
         /// Чтение информации с консоли
         /// </summary>
@@ -160,7 +156,7 @@ namespace Model
             bool result = 
                 double.TryParse(Console.ReadLine().Replace('.', ','), 
                 out var number);
-            if (result != true)
+            if (!result)
                 throw new ArgumentException("Введите числовые значения!");
             return number;
         }
@@ -174,8 +170,7 @@ namespace Model
             Console.WriteLine($"Объём затраченного топлива: " +
                 $" {value.SpentFuel()} литров.");
         }
-
-        // TODO: Уточнить Exception
+        
         /// <summary>
         /// Проверка введенной информации
         /// </summary>

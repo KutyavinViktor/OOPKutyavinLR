@@ -26,16 +26,14 @@ namespace Model
                 _coefficientOfHybridity = CheckPositiveNumber(value);
             }
         }
-
-        // TODO: Коэффициент как отдельный параметр
+        
         /// <summary>
         /// Вычисление затраченного топлива
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Количество затраченного топлива.</returns>
         public override double SpentFuel()
         {
-            return _coefficientOfHybridity * _distance
-                * _fuelConsumptionPerKm;
+            return СoefficientOfHybridity * Distance * FuelConsumptionPerKm;
         }
 
     }

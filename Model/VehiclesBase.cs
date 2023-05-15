@@ -50,8 +50,7 @@ namespace Model
         /// Вычисление затраченного топлива
         /// </summary>
         public abstract double SpentFuel();
-
-        // TODO: Уточнить Exception
+        
         /// <summary>
         /// Проверка на отрицательные числа
         /// </summary>
