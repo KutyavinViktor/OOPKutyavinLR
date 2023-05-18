@@ -62,7 +62,6 @@ namespace Model
         {
             if (value == null)
             {
-                //TODO: переписать информационную строку
                 throw new NullReferenceException("The string should" +
                     " not be Null");
             }

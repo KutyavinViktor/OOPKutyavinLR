@@ -193,7 +193,6 @@ namespace Model
             return parentStatus == 1 ? null : Adult.GetRandomPerson(gender);
         }
 
-        //TODO: почему public?
         /// <summary>
         /// Проверка возраста ребенка.
         /// </summary>
