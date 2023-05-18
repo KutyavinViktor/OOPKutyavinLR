@@ -59,20 +59,20 @@ namespace Model
         /// <returns>Информация о взрослом человеке.</returns>
         public override string GetInfo()
         {
-            string familyStatusInfo = "Холост";
-            string workInfo = "Не имеет работы";
+            string familyStatusInfo = "Single";
+            string workInfo = "Does not have a job";
 
             if (Gender.Equals(Gender.Male) && Spouse != null)
             {
-                familyStatusInfo = $"Женат на " +
+                familyStatusInfo = $"Married to " +
                     $"{Spouse.GetNameSurname()}";
             }
 
             if (Gender.Equals(Gender.Female))
             {
                 familyStatusInfo = Spouse == null
-                    ? $"Не замужем"
-                    : $"Замужем за " +
+                    ? $"Not married"
+                    : $"Married to " +
                     $"{Spouse.GetNameSurname()}";
             }
 
@@ -82,9 +82,9 @@ namespace Model
             }
 
             return $"{PrintPerson()};\n" +
-                $"Серия и номер паспорта: {PassportInfo};\n" +
-                $"Семейное положение: {familyStatusInfo};\n" +
-                $"Место работы: {workInfo}\n ";
+                $"Passport series and number: {PassportInfo};\n" +
+                $"Marital status: {familyStatusInfo};\n" +
+                $"Place of work: {workInfo}\n ";
         }
 
         /// <summary>
@@ -137,8 +137,8 @@ namespace Model
 
             //TODO: duplication
 
-            string randomSeriesPassport = NumberDigits(4);
-            string randomNumberPassport = NumberDigits(6);
+            string randomSeriesPassport = GeneratingGandomNumbers(4);
+            string randomNumberPassport = GeneratingGandomNumbers(6);
 
             var randomPassport = $"{randomSeriesPassport} " +
                                  $"{randomNumberPassport}";
@@ -169,7 +169,12 @@ namespace Model
                 randomPassport, randomHuman, randomWorkPlace);
         }
 
-        public string NumberDigits(int numberDigits)
+        /// <summary>
+        /// Метод, генерирующий заданное количество рандомных цифр
+        /// </summary>
+        /// <param name="numberDigits">количество рандомных цифр.</param>
+        /// <returns>рандомные цифры.</returns>
+        public static string GeneratingGandomNumbers(int numberDigits)
         {
             string seriesOrNumer = "";
             Random random = new Random();
@@ -191,8 +196,8 @@ namespace Model
         {
             if (age is < MinAge or > MaxAge)
             {
-                throw new IndexOutOfRangeException($"Возраст должен" +
-                    $" быть в диапазоне ({MinAge}...{MaxAge}).");
+                throw new IndexOutOfRangeException($"The age should " +
+                    $"be in the range ({MinAge}...{MaxAge}).");
             }
         }
 
@@ -211,7 +216,7 @@ namespace Model
 
             var chosenPosition = positions[rnd.Next(positions.Length)];
 
-            return $"Позиция футболиста - {chosenPosition}";
+            return $"The position of a football player - {chosenPosition}";
         }
 
     }

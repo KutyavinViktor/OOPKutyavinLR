@@ -164,7 +164,8 @@ namespace Model
         /// </summary>
         /// <param name="value">введённое имя/фамилия.</param>
         /// <returns>return имя/фамлию.</returns>
-        /// <exception cref="ArgumentException">error output.</exception>
+        /// <exception cref="ArgumentException">генерируется, если в метод
+        /// для параметра передается некорректное значение.</exception>
         private void CheckString(string value)
         {
             Regex word = new(@"(^[А-яA-z]*(-)?[А-яA-z]*$)");
@@ -206,6 +207,8 @@ namespace Model
         /// Метод соответствия языка в имени и фамилии
         /// </summary>
         /// <param name="word">Имя и фамилия</param>
+        /// <exception cref="ArgumentException">генерируется, если в метод
+        /// для параметра передается некорректное значение.</exception>
         private void ChekingSamenessLanguage(string word)
         {
             if (DefinitionLanguage(word) == Languages.Unknown)
@@ -221,7 +224,8 @@ namespace Model
         /// </summary>
         /// <param name="name">Имя</param>
         /// <param name="surname">Фамилия</param>
-        /// <exception cref="FormatException"></exception>
+        /// <exception cref="FormatException">Сравниваемые
+        /// строки должны совпадать</exception>
         private void CheckToLanguage(string name, string surname)
         {
             if (!string.IsNullOrEmpty(name)

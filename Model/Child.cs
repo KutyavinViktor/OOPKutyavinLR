@@ -103,21 +103,21 @@ namespace Model
         {
             var fatherStatus = Father != null
                 ? Father.GetNameSurname()
-                : "Информации об отце нет";
+                : "There is no information about the father";
             var motherStatus = Mother != null
                 ? Mother.GetNameSurname()
-                : "Информации о матери нет";
+                : "There is no information about the mother";
 
-            var schoolStatus = "Не обучается";
+            var schoolStatus = "Not trained";
             if (!string.IsNullOrEmpty(School))
             {
-                schoolStatus = $"Учится в ({School})";
+                schoolStatus = $"Studies in ({School})";
             }
 
             return $"{PrintPerson()};\n" +
-                $"Отец: {fatherStatus};\n" +
-                $"Мать: {motherStatus};\n" +
-                $"Школа: {schoolStatus}\n";
+                $"Father: {fatherStatus};\n" +
+                $"Mother: {motherStatus};\n" +
+                $"School: {schoolStatus}\n";
         }
 
         /// <summary>
@@ -205,9 +205,8 @@ namespace Model
         {
             if (age is < MinAge or > MaxAge)
             {
-                throw new IndexOutOfRangeException($"Возраст ребенка" +
-                $" должен находится в диапазоне " +
-                    $"[{MinAge}...{MaxAge}].");
+                throw new IndexOutOfRangeException($"the child's age" +
+                    $" is in the range [{MinAge}...{MaxAge}].");
             }
         }
 
@@ -226,7 +225,7 @@ namespace Model
 
             var preferredHouse = grades[rnd.Next(grades.Length)];
 
-            return $"Успеваемость ребенка: {preferredHouse}";
+            return $"Child's academic performance: {preferredHouse}";
         }
 
     }
