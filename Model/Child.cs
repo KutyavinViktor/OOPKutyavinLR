@@ -179,7 +179,6 @@ namespace Model
                 randomGender, randomFather, randomMother, randomSchool);
         }
 
-        //TODO: почему public?
         /// <summary>
         /// Генерация случайного родителя
         /// </summary>
@@ -194,7 +193,7 @@ namespace Model
             return parentStatus == 1 ? null : Adult.GetRandomPerson(gender);
         }
 
-        //TODO: почему protected?
+        //TODO: почему public?
         /// <summary>
         /// Проверка возраста ребенка.
         /// </summary>

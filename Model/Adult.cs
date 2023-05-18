@@ -135,7 +135,6 @@ namespace Model
 
             var randomAge = random.Next(MinAge, MaxAge);
 
-            //TODO: duplication
 
             string randomSeriesPassport = GeneratingGandomNumbers(4);
             string randomNumberPassport = GeneratingGandomNumbers(6);
@@ -208,7 +207,6 @@ namespace Model
         public string GetPosition()
         {
             var rnd = new Random();
-            //TODO: к одному языку
             string[] positions =
             {
                 "Forward", "Defender", "Goalkeeper", "Midfielders"

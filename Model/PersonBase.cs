@@ -4,7 +4,6 @@ using System.Text.RegularExpressions;
 
 namespace Model
 {
-    //TODO: file naming
     /// <summary>
     /// Класс описывающий человека.
     /// </summary>
@@ -59,13 +58,11 @@ namespace Model
         /// <param name="value">Подаваемая строка</param>
         /// <exception cref="NullReferenceException">Пустая строка</exception>
         private void CheckNull(string value)
-
         {
             if (value == null)
             {
                 //TODO: переписать информационную строку
-                throw new NullReferenceException
-                    ("Пустая строка.");
+                throw new NullReferenceException("Пустая строка.");
             }
         }
 
