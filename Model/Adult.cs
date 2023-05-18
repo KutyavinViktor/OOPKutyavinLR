@@ -191,7 +191,7 @@ namespace Model
         /// <param name="age">Возраст взрослого человека.</param>
         /// <exception cref="IndexOutOfRangeException">Возраст должен
         /// находится в определнных пределах.</exception>
-        public override void CheckAge(int age)
+        protected override void CheckAge(int age)
         {
             if (age is < MinAge or > MaxAge)
             {

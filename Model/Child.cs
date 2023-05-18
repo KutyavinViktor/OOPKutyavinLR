@@ -200,7 +200,7 @@ namespace Model
         /// <param name="age">Возраст ребенка.</param>
         /// <exception cref="IndexOutOfRangeException">Возраст не входит
         /// в допустимый диапазон.</exception>
-        public override void CheckAge(int age)
+        protected override void CheckAge(int age)
         {
             if (age is < MinAge or > MaxAge)
             {

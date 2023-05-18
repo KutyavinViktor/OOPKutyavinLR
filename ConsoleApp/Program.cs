@@ -13,8 +13,8 @@ namespace Model
         /// </summary>
         private static void Main()
         {
-            Console.WriteLine("Если хоите добавить 7 случайных человек в " +
-                "список, нажмите любую клавишу\n");
+            Console.WriteLine("If you want to add 7 random people" +
+                " to the list, press any key\n");
             var listPeople = new PersonList();
             var rrandom = new Random();
 
@@ -28,14 +28,14 @@ namespace Model
 
             _ = Console.ReadKey();
 
-            Console.WriteLine("Информация о сгенерированных людях:\n");
+            Console.WriteLine("Information about generated people:\n");
             PrintList(listPeople);
 
-            Console.WriteLine("Для вывода дополнительной информации " +
-                "о 4 человеке, нажмите любую клавишу\n");
+            Console.WriteLine("To display additional information about" +
+                " the fourth person, press any key\n");
             _ = Console.ReadKey();
 
-            Console.Write("Дополнительная информация о 4 человеке: ");
+            Console.Write("Additional information about the fourth person:");
             var person = listPeople.FindPersonByIndex(3);
 
             switch (person)
@@ -68,7 +68,7 @@ namespace Model
             }
             else
             {
-                Console.WriteLine("Список пуст");
+                Console.WriteLine("The list is empty");
             }
         }
     }

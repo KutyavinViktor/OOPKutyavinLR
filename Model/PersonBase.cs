@@ -53,16 +53,18 @@ namespace Model
         }
 
         /// <summary>
-        /// Проверка на пустую строку
+        /// Проверка на Null
         /// </summary>
         /// <param name="value">Подаваемая строка</param>
-        /// <exception cref="NullReferenceException">Пустая строка</exception>
+        /// <exception cref="NullReferenceException">Строка
+        /// не должна быть Null</exception>
         private void CheckNull(string value)
         {
             if (value == null)
             {
                 //TODO: переписать информационную строку
-                throw new NullReferenceException("Пустая строка.");
+                throw new NullReferenceException("The string should" +
+                    " not be Null");
             }
         }
 
@@ -169,8 +171,8 @@ namespace Model
 
             if (!word.IsMatch(value))
             {
-                throw new ArgumentException("Разрешено вводить только" +
-                    " буквы и один дефис.");
+                throw new ArgumentException("It is allowed to enter " +
+                    "only letters and one hyphen.");
             }
         }
 
@@ -210,9 +212,8 @@ namespace Model
         {
             if (DefinitionLanguage(word) == Languages.Unknown)
             {
-                throw new ArgumentException("Некоректный ввод. " +
-                        "Пожалуйста, используйте только" +
-                        " символы одного языка.");
+                throw new ArgumentException("Incorrect input. " +
+                        "Please use only characters of the same language.");
             }
         }
 
@@ -233,8 +234,8 @@ namespace Model
 
                 if (nameLanguage != surnameLanguage)
                 {
-                    throw new FormatException("Имя и фамилия должны" +
-                        " быть на одинаковом языке");
+                    throw new FormatException("First and last name must" +
+                        " be in the same language");
                 }
             }
         }
@@ -271,9 +272,6 @@ namespace Model
         /// Проверка возраста человека.
         /// </summary>
         /// <param name="age">Возраст человека.</param>
-        public virtual void CheckAge(int age)
-        {
-
-        }
+        protected abstract void CheckAge(int age);
     }
 }
