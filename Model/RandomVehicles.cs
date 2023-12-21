@@ -22,7 +22,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Генерация случайной зарплаты
+        /// Генерация случайного транспортного средства
         /// </summary>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
@@ -46,7 +46,7 @@ namespace Model
                     }
                 default:
                     {
-                        throw new ArgumentException("Тип транспортного средчтва " +
+                        throw new ArgumentException("Тип транспортного средства " +
                             "отсутствует.");
                     }
             }

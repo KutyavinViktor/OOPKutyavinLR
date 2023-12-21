@@ -13,17 +13,17 @@ namespace View
     internal class VehicleListEventArgs : EventArgs
     {
         /// <summary>
-        /// Список зарплат
+        /// Список транспортных средств
         /// </summary>
         public BindingList<VehiclesBase> VehicleListValue { get; private set; }
 
         /// <summary>
-        /// Конструктор союытия добавления в список зарплат.
+        /// Конструктор союытия добавления в список траснпортных средств.
         /// </summary>
-        /// <param name="wages"></param>
-        public VehicleListEventArgs(BindingList<VehiclesBase> wages)
+        /// <param name="vehicles"></param>
+        public VehicleListEventArgs(BindingList<VehiclesBase> vehicles)
         {
-            VehicleListValue = wages;
+            VehicleListValue = vehicles;
         }
     }
 }
