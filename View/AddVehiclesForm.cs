@@ -31,7 +31,7 @@ namespace View
         /// Метка UserControl
         /// </summary>
         private UserControl _userControl;
-        
+
         /// <summary>
         /// Конструктор добавления транспортных средств
         /// </summary>
@@ -115,7 +115,7 @@ namespace View
         {
             Close();
         }
-        
+
         /// <summary>
         /// Загрузка формы
         /// </summary>

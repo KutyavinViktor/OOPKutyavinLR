@@ -40,12 +40,14 @@
             // 
             // groupBoxFilter
             // 
+            groupBoxFilter.BackColor = Color.Transparent;
             groupBoxFilter.Controls.Add(textBoxFilter);
             groupBoxFilter.Controls.Add(buttonAdd);
             groupBoxFilter.Controls.Add(checkBoxInput);
             groupBoxFilter.Controls.Add(checkBoxHybridCar);
             groupBoxFilter.Controls.Add(checkBoxHelicopter);
             groupBoxFilter.Controls.Add(checkBoxCar);
+            groupBoxFilter.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             groupBoxFilter.Location = new Point(12, 12);
             groupBoxFilter.Name = "groupBoxFilter";
             groupBoxFilter.Size = new Size(345, 189);
@@ -124,6 +126,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            BackgroundImage = Properties.Resources.ocr;
             ClientSize = new Size(368, 213);
             Controls.Add(groupBoxFilter);
             MaximizeBox = false;

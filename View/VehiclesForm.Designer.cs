@@ -48,6 +48,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.BackColor = Color.Transparent;
             groupBox1.Controls.Add(dataGridViewFuel);
             groupBox1.Location = new Point(42, 39);
             groupBox1.Name = "groupBox1";
@@ -73,7 +74,7 @@
             ButtonAddVehicles.BackgroundImageLayout = ImageLayout.Zoom;
             ButtonAddVehicles.FlatAppearance.BorderSize = 0;
             ButtonAddVehicles.FlatStyle = FlatStyle.Flat;
-            ButtonAddVehicles.Location = new Point(602, 356);
+            ButtonAddVehicles.Location = new Point(602, 343);
             ButtonAddVehicles.Name = "ButtonAddVehicles";
             ButtonAddVehicles.Size = new Size(54, 47);
             ButtonAddVehicles.TabIndex = 1;
@@ -82,7 +83,7 @@
             // 
             // buttonRandom
             // 
-            buttonRandom.Location = new Point(62, 415);
+            buttonRandom.Location = new Point(62, 399);
             buttonRandom.Name = "buttonRandom";
             buttonRandom.Size = new Size(262, 29);
             buttonRandom.TabIndex = 3;
@@ -97,7 +98,7 @@
             buttonDelete.BackgroundImageLayout = ImageLayout.Zoom;
             buttonDelete.FlatAppearance.BorderSize = 0;
             buttonDelete.FlatStyle = FlatStyle.Flat;
-            buttonDelete.Location = new Point(662, 356);
+            buttonDelete.Location = new Point(662, 343);
             buttonDelete.Name = "buttonDelete";
             buttonDelete.Size = new Size(57, 47);
             buttonDelete.TabIndex = 4;
@@ -106,7 +107,7 @@
             // 
             // buttonReset
             // 
-            buttonReset.Location = new Point(637, 415);
+            buttonReset.Location = new Point(637, 399);
             buttonReset.Name = "buttonReset";
             buttonReset.Size = new Size(94, 29);
             buttonReset.TabIndex = 5;
@@ -116,7 +117,11 @@
             // 
             // toolStrip1
             // 
+            toolStrip1.BackColor = Color.Transparent;
+            toolStrip1.BackgroundImageLayout = ImageLayout.Zoom;
+            toolStrip1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             toolStrip1.GripMargin = new Padding(0);
+            toolStrip1.GripStyle = ToolStripGripStyle.Hidden;
             toolStrip1.ImageScalingSize = new Size(20, 20);
             toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripDropDownButton1 });
             toolStrip1.Location = new Point(0, 0);
@@ -139,20 +144,20 @@
             // сохранитьToolStripMenuItem
             // 
             сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            сохранитьToolStripMenuItem.Size = new Size(166, 26);
+            сохранитьToolStripMenuItem.Size = new Size(224, 26);
             сохранитьToolStripMenuItem.Text = "Сохранить";
             сохранитьToolStripMenuItem.Click += SaveToolStripMenuItem_Click;
             // 
             // загрузитьToolStripMenuItem
             // 
             загрузитьToolStripMenuItem.Name = "загрузитьToolStripMenuItem";
-            загрузитьToolStripMenuItem.Size = new Size(166, 26);
+            загрузитьToolStripMenuItem.Size = new Size(224, 26);
             загрузитьToolStripMenuItem.Text = "Загрузить";
             загрузитьToolStripMenuItem.Click += OpenToolStripMenuItem_Click;
             // 
             // buttonFilter
             // 
-            buttonFilter.Location = new Point(351, 415);
+            buttonFilter.Location = new Point(351, 399);
             buttonFilter.Name = "buttonFilter";
             buttonFilter.Size = new Size(94, 29);
             buttonFilter.TabIndex = 7;
@@ -162,7 +167,7 @@
             // 
             // buttonFilterExit
             // 
-            buttonFilterExit.Location = new Point(471, 415);
+            buttonFilterExit.Location = new Point(471, 399);
             buttonFilterExit.Name = "buttonFilterExit";
             buttonFilterExit.Size = new Size(140, 29);
             buttonFilterExit.TabIndex = 8;
@@ -175,8 +180,9 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            BackgroundImage = Properties.Resources.ocr;
             BackgroundImageLayout = ImageLayout.Center;
-            ClientSize = new Size(792, 457);
+            ClientSize = new Size(792, 449);
             Controls.Add(buttonFilterExit);
             Controls.Add(buttonFilter);
             Controls.Add(toolStrip1);

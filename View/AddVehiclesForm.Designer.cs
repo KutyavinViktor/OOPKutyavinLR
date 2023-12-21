@@ -33,9 +33,9 @@
             buttonClouse = new Button();
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
-            carUserControl1 = new CarUserControl();
-            helicopterUserControl1 = new HelicopterUserControl();
             hybridCarUserControl1 = new HybridCarUserControl();
+            helicopterUserControl1 = new HelicopterUserControl();
+            carUserControl1 = new CarUserControl();
             groupBox2.SuspendLayout();
             SuspendLayout();
             // 
@@ -89,12 +89,12 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Значения величин";
             // 
-            // carUserControl1
+            // hybridCarUserControl1
             // 
-            carUserControl1.Location = new Point(26, 28);
-            carUserControl1.Name = "carUserControl1";
-            carUserControl1.Size = new Size(276, 111);
-            carUserControl1.TabIndex = 0;
+            hybridCarUserControl1.Location = new Point(26, 28);
+            hybridCarUserControl1.Name = "hybridCarUserControl1";
+            hybridCarUserControl1.Size = new Size(276, 111);
+            hybridCarUserControl1.TabIndex = 2;
             // 
             // helicopterUserControl1
             // 
@@ -103,18 +103,19 @@
             helicopterUserControl1.Size = new Size(276, 111);
             helicopterUserControl1.TabIndex = 1;
             // 
-            // hybridCarUserControl1
+            // carUserControl1
             // 
-            hybridCarUserControl1.Location = new Point(26, 28);
-            hybridCarUserControl1.Name = "hybridCarUserControl1";
-            hybridCarUserControl1.Size = new Size(276, 111);
-            hybridCarUserControl1.TabIndex = 2;
+            carUserControl1.Location = new Point(26, 28);
+            carUserControl1.Name = "carUserControl1";
+            carUserControl1.Size = new Size(276, 111);
+            carUserControl1.TabIndex = 0;
             // 
             // AddVehiclesForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            BackgroundImage = Properties.Resources.ocr;
             ClientSize = new Size(387, 332);
             Controls.Add(buttonClouse);
             Controls.Add(comboVehiclesSelection);
