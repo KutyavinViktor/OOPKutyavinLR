@@ -86,6 +86,7 @@ namespace View
         {
             try
             {
+                //TODO: BUG
                 var vehiclesControlName =
                     comboVehiclesSelection.SelectedItem.ToString();
                 var vehiclesControl = _comboBoxToUserControl[vehiclesControlName];
