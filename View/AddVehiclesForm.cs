@@ -31,17 +31,10 @@ namespace View
         /// Метка UserControl
         /// </summary>
         private UserControl _userControl;
-
-        private void AddVehiclesForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void carUserControl1_Load(object sender, EventArgs e)
-        {
-
-        }
         
+        /// <summary>
+        /// Конструктор добавления транспортных средств
+        /// </summary>
         public AddVehiclesForm()
         {
             InitializeComponent();
@@ -83,6 +76,11 @@ namespace View
             }
         }
 
+        /// <summary>
+        /// Обработчик события для кнопки "ОК"
+        /// </summary>
+        /// <param name="sender">Объект, вызывающий событие.</param>
+        /// <param name="e">Аргументы события.</param>
         private void ButtonOk(object sender, EventArgs e)
         {
             try

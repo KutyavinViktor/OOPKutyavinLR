@@ -45,6 +45,11 @@ namespace View
             _listVehicles = vehicles;
         }
 
+        /// <summary>
+        /// Обработчик события изменения текста в текстовом поле фильтрации
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void textBoxFilter_TextChanged(object sender, EventArgs e)
         {
             try

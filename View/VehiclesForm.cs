@@ -6,10 +6,14 @@ namespace View
 {
     public partial class VehiclesForm : Form
     {
+        /// <summary>
+        /// Конструктор
+        /// </summary>
         public VehiclesForm()
         {
             InitializeComponent();
         }
+
         /// <summary>
         /// Список зарплат
         /// </summary>
@@ -19,7 +23,6 @@ namespace View
         /// Лист отфильтрованных транспортных средств
         /// </summary>
         private BindingList<VehiclesBase> _listVehiclesFilter = new();
-
 
         /// <summary>
         /// Для файлов 
@@ -41,8 +44,8 @@ namespace View
         /// <summary>
         /// Создание таблицы DataGrid.
         /// </summary>
-        /// <param name="vehicles"></param>
-        /// <param name="dataGridView"></param>
+        /// <param name="vehicles">Список транспортных средств</param>
+        /// <param name="dataGridView">Элемент управления</param>
         public static void CreateTable(BindingList<VehiclesBase> vehicles,
               DataGridView dataGridView)
         {
@@ -61,7 +64,6 @@ namespace View
             dataGridView.DefaultCellStyle.WrapMode =
                 DataGridViewTriState.True;
         }
-
 
         /// <summary>
         /// Добавление нового транспортного средства.
@@ -128,8 +130,6 @@ namespace View
             _vehiclesList.Add(RandomVehicles.GetRandomWages());
         }
 
-
-
         /// <summary>
         /// Кнопка для открытия фильтра
         /// </summary>
@@ -157,7 +157,6 @@ namespace View
         {
             CreateTable(_vehiclesList, dataGridViewFuel);
         }
-
 
         /// <summary>
         /// Сохранение списка в файл

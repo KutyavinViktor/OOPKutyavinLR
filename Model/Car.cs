@@ -6,8 +6,6 @@ namespace Model
     /// </summary>
     public class Car : VehiclesBase
     {
-
-
         /// <summary>
         /// Вычисление затраченного топлива
         /// </summary>

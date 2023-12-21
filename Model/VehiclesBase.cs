@@ -70,7 +70,9 @@ namespace Model
         /// </summary>
         public abstract double SpentFuel();
 
-
+        /// <summary>
+        /// Получение значения стоимости топлива
+        /// </summary>
         [DisplayName("Стоимость топлива")]
         public double SpentFuelValue
         {

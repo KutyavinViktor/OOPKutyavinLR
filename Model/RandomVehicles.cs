@@ -60,9 +60,9 @@ namespace Model
         {
             var helicopter = new Helicopter();
             {
-                helicopter.CargoWeight = GetRandomDouble(100, 1000);
-                helicopter.FuelConsumptionPerKm = GetRandomDouble(1, 22);
-                helicopter.Distance = GetRandomDouble(100, 1000);
+                helicopter.CargoWeight = GetRandomDouble(1, 10000);
+                helicopter.FuelConsumptionPerKm = GetRandomDouble(1, 100);
+                helicopter.Distance = GetRandomDouble(1, 10000);
             };
             return helicopter;
         }
@@ -75,9 +75,9 @@ namespace Model
         {
             var hybridCar = new HybridCar();
             {
-                hybridCar.СoefficientOfHybridity = GetRandomDouble(100, 1000);
-                hybridCar.FuelConsumptionPerKm = GetRandomDouble(1, 22);
-                hybridCar.Distance = GetRandomDouble(100, 1000);
+                hybridCar.СoefficientOfHybridity = GetRandomDouble(1, 10000);
+                hybridCar.FuelConsumptionPerKm = GetRandomDouble(1, 30);
+                hybridCar.Distance = GetRandomDouble(1, 1000);
             };
             return hybridCar;
         }
@@ -90,8 +90,8 @@ namespace Model
         {
             var car = new Car();
             {
-                car.Distance = GetRandomDouble(100, 1000);
-                car.FuelConsumptionPerKm = GetRandomDouble(1, 22);
+                car.Distance = GetRandomDouble(1, 10000);
+                car.FuelConsumptionPerKm = GetRandomDouble(1, 50);
             };
             return car;
         }

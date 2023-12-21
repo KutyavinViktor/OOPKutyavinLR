@@ -125,7 +125,6 @@
             Name = "AddVehiclesForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AddVehiclesForm";
-            Load += AddVehiclesForm_Load;
             groupBox2.ResumeLayout(false);
             ResumeLayout(false);
         }
