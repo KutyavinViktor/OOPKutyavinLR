@@ -4,6 +4,7 @@ using System.Xml.Serialization;
 using Model;
 namespace View
 {
+    //TODO: XML
     public partial class VehiclesForm : Form
     {
         /// <summary>

@@ -12,6 +12,7 @@ using View;
 
 namespace View
 {
+    //TODO: XML
     public partial class AddVehiclesForm : Form
     {
 

@@ -10,8 +10,10 @@ using System.Windows.Forms;
 using Model;
 namespace View
 {
+    //TODO: XML
     public partial class CarUserControl : UserControl, IAddVehicles
     {
+        //TODO: XML
         public CarUserControl()
         {
             InitializeComponent();
