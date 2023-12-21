@@ -14,15 +14,15 @@ namespace View
         /// <summary>
         /// Отправка значения
         /// </summary>
-        public VehiclesBase WageValue { get; private set; }
+        public VehiclesBase VehicleValue { get; private set; }
 
         /// <summary>
         /// Конструктор для передачи значения
         /// </summary>
         /// <param name="sendingValue">Передача</param>
-        public VehicleEventArgs(VehiclesBase wageValue)
+        public VehicleEventArgs(VehiclesBase vehicleValue)
         {
-            WageValue = wageValue;
+            VehicleValue = vehicleValue;
         }
     }
 }

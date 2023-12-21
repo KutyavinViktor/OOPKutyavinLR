@@ -76,7 +76,7 @@ namespace View
 
             addWageForm.AddingVehicles += (sender, wageEventArgs) =>
             {
-                _vehiclesList.Add(((VehicleEventArgs)wageEventArgs).WageValue);
+                _vehiclesList.Add(((VehicleEventArgs)wageEventArgs).VehicleValue);
             };
             addWageForm.ShowDialog();
 
@@ -127,7 +127,7 @@ namespace View
         /// <param name="e"></param>
         private void ButtonRandom_Click(object sender, EventArgs e)
         {
-            _vehiclesList.Add(RandomVehicles.GetRandomWages());
+            _vehiclesList.Add(RandomVehicles.GetRandomVehicles());
         }
 
         /// <summary>

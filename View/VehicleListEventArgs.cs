@@ -18,7 +18,7 @@ namespace View
         public BindingList<VehiclesBase> VehicleListValue { get; private set; }
 
         /// <summary>
-        /// Конструктор союытия добавления в список траснпортных средств.
+        /// Конструктор события добавления в список траснпортных средств.
         /// </summary>
         /// <param name="vehicles"></param>
         public VehicleListEventArgs(BindingList<VehiclesBase> vehicles)

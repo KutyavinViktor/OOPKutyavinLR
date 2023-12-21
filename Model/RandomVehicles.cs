@@ -26,7 +26,7 @@ namespace Model
         /// </summary>
         /// <returns></returns>
         /// <exception cref="ArgumentException"></exception>
-        public static VehiclesBase GetRandomWages()
+        public static VehiclesBase GetRandomVehicles()
         {
             var figureType = _random.Next(0, 3);
 
