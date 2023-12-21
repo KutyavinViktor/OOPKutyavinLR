@@ -6,6 +6,8 @@ namespace Model
     /// </summary>
     public class Car : VehiclesBase
     {
+
+
         /// <summary>
         /// Вычисление затраченного топлива
         /// </summary>
@@ -15,5 +17,20 @@ namespace Model
             return Distance * FuelConsumptionPerKm;
         }
 
+        /// <summary>
+        /// Параметры для расчёта стоимости топлива
+        /// </summary>
+        public override string Parameters
+        {
+            get
+            {
+                return "Отсутствуют";
+            }
+        }
+
+        /// <summary>
+        /// Тип транспортного средства
+        /// </summary>
+        public override string VehicleType => "Автомобиль";
     }
 }

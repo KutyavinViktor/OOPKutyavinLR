@@ -36,6 +36,20 @@ namespace Model
             return Distance * FuelConsumptionPerKm * CargoWeight;
         }
 
+        /// <summary>
+        /// Тип транспортного средства
+        /// </summary>
+        public override string VehicleType => "Вертолёт";
 
+        /// <summary>
+        /// Дополнительные параметры для расчёта стоимости топлива
+        /// </summary>
+        public override string Parameters
+        {
+            get
+            {
+                return $"Масса груза = {CargoWeight}";
+            }
+        }
     }
 }

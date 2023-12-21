@@ -1,4 +1,3 @@
-
 namespace Model
 {
     /// <summary>
@@ -26,7 +25,7 @@ namespace Model
                 _coefficientOfHybridity = CheckPositiveNumber(value);
             }
         }
-        
+
         /// <summary>
         /// Вычисление затраченного топлива
         /// </summary>
@@ -36,5 +35,20 @@ namespace Model
             return СoefficientOfHybridity * Distance * FuelConsumptionPerKm;
         }
 
+        /// <summary>
+        /// Тип транспортного средства
+        /// </summary>
+        public override string VehicleType => "Гибрид";
+
+        /// <summary>
+        /// Дополнительные параметры для расчёта стоимости топлива
+        /// </summary>
+        public override string Parameters
+        {
+            get
+            {
+                return $"Коэффициент гибридности = {СoefficientOfHybridity}";
+            }
+        }
     }
 }

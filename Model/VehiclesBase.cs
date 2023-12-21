@@ -1,11 +1,22 @@
-// TODO: Общие атрибуты вынести в базовый класс
+using System.ComponentModel;
+using System.Xml.Serialization;
+
 namespace Model
 {
+    [XmlInclude(typeof(Car))]
+    [XmlInclude(typeof(Helicopter))]
+    [XmlInclude(typeof(HybridCar))]
     /// <summary>
     /// Класс для расчёта затраченного топлива
     /// </summary>
     public abstract class VehiclesBase
     {
+        /// <summary>
+        /// Тип транспортного средства
+        /// </summary>
+        [DisplayName("Тип транспортного средства")]
+        public virtual string VehicleType { get; }
+
         /// <summary>
         /// Расстояние в км
         /// </summary>
@@ -19,6 +30,7 @@ namespace Model
         /// <summary>
         /// Расстояние в км
         /// </summary>
+        [DisplayName("Расстояние в км")]
         public double Distance
         {
             get
@@ -34,6 +46,7 @@ namespace Model
         /// <summary>
         /// Расход топлива на км
         /// </summary>
+        [DisplayName("Расход топлива на км")]
         public double FuelConsumptionPerKm
         {
             get
@@ -47,10 +60,23 @@ namespace Model
         }
 
         /// <summary>
+        /// Дополнительные аараметры для расчёта стоимости топлива
+        /// </summary>
+        [DisplayName("Доп параметры")]
+        public virtual string Parameters { get; }
+
+        /// <summary>
         /// Вычисление затраченного топлива
         /// </summary>
         public abstract double SpentFuel();
-        
+
+
+        [DisplayName("Стоимость топлива")]
+        public double SpentFuelValue
+        {
+            get { return SpentFuel(); }
+        }
+
         /// <summary>
         /// Проверка на отрицательные числа
         /// </summary>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfVehiclesBase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <VehiclesBase xsi:type="Car">
+    <Distance>7</Distance>
+    <FuelConsumptionPerKm>6</FuelConsumptionPerKm>
+  </VehiclesBase>
+  <VehiclesBase xsi:type="Helicopter">
+    <Distance>848</Distance>
+    <FuelConsumptionPerKm>11</FuelConsumptionPerKm>
+    <CargoWeight>257</CargoWeight>
+  </VehiclesBase>
+</ArrayOfVehiclesBase>
