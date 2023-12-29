@@ -181,7 +181,7 @@ namespace View
 
             var saveFileDialog = new SaveFileDialog
             {
-                Filter = "Файлы (*.zp)|*.zp|Все файлы (*.*)|*.*"
+                Filter = "Файлы (*.vh)|*.vh|Все файлы (*.*)|*.*"
             };
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
@@ -218,7 +218,7 @@ namespace View
         {
             var openFileDialog = new OpenFileDialog
             {
-                Filter = "Файлы (*.zp)|*.zp|Все файлы (*.*)|*.*"
+                Filter = "Файлы (*.vh)|*.vh|Все файлы (*.*)|*.*"
             };
 
             if (openFileDialog.ShowDialog() != DialogResult.OK) return;

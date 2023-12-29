@@ -2,7 +2,7 @@
 namespace Model
 {
     /// <summary>
-    /// Класс для расчёта потраченного вертолётом топлива
+    /// Вертолёт
     /// </summary>
     public class Helicopter : VehiclesBase
     {
@@ -42,7 +42,7 @@ namespace Model
         public override string VehicleType => "Вертолёт";
 
         /// <summary>
-        /// Дополнительные параметры для расчёта стоимости топлива
+        /// Дополнительные параметры для расчёта объёма топлива
         /// </summary>
         public override string Parameters
         {

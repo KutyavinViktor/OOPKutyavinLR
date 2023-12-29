@@ -125,7 +125,7 @@
             MaximizeBox = false;
             Name = "AddVehiclesForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "AddVehiclesForm";
+            Text = "Добавление транспорта";
             groupBox2.ResumeLayout(false);
             ResumeLayout(false);
         }

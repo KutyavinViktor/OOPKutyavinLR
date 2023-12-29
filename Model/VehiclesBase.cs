@@ -61,9 +61,9 @@ namespace Model
         }
 
         /// <summary>
-        /// Дополнительные аараметры для расчёта стоимости топлива
+        /// Дополнительные аараметры для расчёта объёма топлива
         /// </summary>
-        [DisplayName("Доп параметры")]
+        [DisplayName("Дополнительные параметры")]
         public virtual string Parameters { get; }
 
         /// <summary>
@@ -72,9 +72,9 @@ namespace Model
         public abstract double SpentFuel();
 
         /// <summary>
-        /// Получение значения стоимости топлива
+        /// Получение значения объёма топлива
         /// </summary>
-        [DisplayName("Стоимость топлива")]
+        [DisplayName("Объём топлива")]
         public double SpentFuelValue
         {
             get { return SpentFuel(); }

@@ -103,7 +103,7 @@ namespace View
                 {
                     MessageBox.Show("Выберите тип транспортного средства!",
                         "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                } 
+                }
             }
             catch (ArgumentException ex)
             {

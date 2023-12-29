@@ -1,7 +1,7 @@
 namespace Model
 {
     /// <summary>
-    /// Класс для расчёта потраченного машиной-гибридом топлива
+    /// Машина-гибрид
     /// </summary>
     public class HybridCar : VehiclesBase
     {
@@ -41,7 +41,7 @@ namespace Model
         public override string VehicleType => "Гибрид";
 
         /// <summary>
-        /// Дополнительные параметры для расчёта стоимости топлива
+        /// Дополнительные параметры для расчёта объёма топлива
         /// </summary>
         public override string Parameters
         {

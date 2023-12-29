@@ -87,7 +87,7 @@
             checkBoxInput.Name = "checkBoxInput";
             checkBoxInput.Size = new Size(218, 24);
             checkBoxInput.TabIndex = 3;
-            checkBoxInput.Text = "Точная стоимость топлива";
+            checkBoxInput.Text = "Точный объём топлива";
             checkBoxInput.UseVisualStyleBackColor = true;
             checkBoxInput.CheckedChanged += CheckBoxInput_CheckedChanged;
             // 
@@ -132,7 +132,7 @@
             MaximizeBox = false;
             Name = "FilterVehicles";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FilterVehicles";
+            Text = "Фильтр транспорта";
             groupBoxFilter.ResumeLayout(false);
             groupBoxFilter.PerformLayout();
             ResumeLayout(false);

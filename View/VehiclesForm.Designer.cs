@@ -195,7 +195,7 @@
             MaximizeBox = false;
             Name = "VehiclesForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Расчёт стоимости топлива транспортных средств";
+            Text = "Расчёт объёма топлива транспортных средств";
             Load += VehiclesForm_Load;
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridViewFuel).EndInit();

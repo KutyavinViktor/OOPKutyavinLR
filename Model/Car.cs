@@ -2,7 +2,7 @@
 namespace Model
 {
     /// <summary>
-    /// Класс для расчёта потраченного машиной топлива
+    /// Машина
     /// </summary>
     public class Car : VehiclesBase
     {
@@ -16,7 +16,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Параметры для расчёта стоимости топлива
+        /// Параметры для расчёта объёма топлива
         /// </summary>
         public override string Parameters
         {
