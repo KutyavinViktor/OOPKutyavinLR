@@ -25,7 +25,8 @@ namespace Model
         /// Генерация случайного транспортного средства
         /// </summary>
         /// <returns></returns>
-        /// <exception cref="ArgumentException"></exception>
+        /// <exception cref="ArgumentException">Возникает при
+        /// создании отсутствующего типа транспортного средства</exception>
         public static VehiclesBase GetRandomVehicles()
         {
             var figureType = _random.Next(0, 3);
@@ -60,7 +61,7 @@ namespace Model
         {
             var helicopter = new Helicopter();
             {
-                helicopter.CargoWeight = GetRandomDouble(1, 10000);
+                helicopter.CargoWeight = GetRandomDouble(1, 1000);
                 helicopter.FuelConsumptionPerKm = GetRandomDouble(1, 100);
                 helicopter.Distance = GetRandomDouble(1, 10000);
             };
@@ -75,7 +76,7 @@ namespace Model
         {
             var hybridCar = new HybridCar();
             {
-                hybridCar.СoefficientOfHybridity = GetRandomDouble(1, 10000);
+                hybridCar.CoefficientOfHybridity = GetRandomDouble(1, 10);
                 hybridCar.FuelConsumptionPerKm = GetRandomDouble(1, 30);
                 hybridCar.Distance = GetRandomDouble(1, 1000);
             };
@@ -90,7 +91,7 @@ namespace Model
         {
             var car = new Car();
             {
-                car.Distance = GetRandomDouble(1, 10000);
+                car.Distance = GetRandomDouble(1, 1000);
                 car.FuelConsumptionPerKm = GetRandomDouble(1, 50);
             };
             return car;

@@ -1,10 +1,15 @@
 using System.ComponentModel;
+using System.Text;
 using System.Windows.Forms;
+using System.Xml;
 using System.Xml.Serialization;
 using Model;
 namespace View
 {
     //TODO: XML
+    /// <summary>
+    /// Класс для создания главной формы
+    /// </summary>
     public partial class VehiclesForm : Form
     {
         /// <summary>
@@ -16,7 +21,7 @@ namespace View
         }
 
         /// <summary>
-        /// Список зарплат
+        /// Список транспортных средств
         /// </summary>
         private BindingList<VehiclesBase> _vehiclesList = new();
 
@@ -182,13 +187,25 @@ namespace View
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 var path = saveFileDialog.FileName.ToString();
-                using (FileStream file = File.Create(path))
+                try
                 {
-                    _serializer.Serialize(file, _vehiclesList);
+                    // Указываем кодировку UTF-8
+                    using (FileStream file = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
+                    using (StreamWriter writer = new StreamWriter(file, Encoding.UTF8))
+                    {
+                        _serializer.Serialize(writer, _vehiclesList);
+                    }
+
+                    MessageBox.Show("Файл успешно сохранён.",
+                        "Сохранение завершено",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                MessageBox.Show("Файл успешно сохранён.",
-                    "Сохранение завершено",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка при сохранении файла: {ex.Message}",
+                        "Ошибка сохранения",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -207,6 +224,7 @@ namespace View
             if (openFileDialog.ShowDialog() != DialogResult.OK) return;
 
             var path = openFileDialog.FileName.ToString();
+            
             try
             {
                 using (var file = new StreamReader(path))
@@ -221,12 +239,11 @@ namespace View
                     "Загрузка завершена",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 MessageBox.Show("Не удалось загрузить файл.\n" +
-                    "Файл повреждён или не соответствует формату.",
-                    "Ошибка",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    "Файл повреждён или не соответствует формату.\n",
+                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

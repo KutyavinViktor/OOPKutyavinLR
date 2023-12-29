@@ -13,6 +13,9 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 namespace View
 {
     //TODO: XML
+    /// <summary>
+    /// Класс для создания фильтра транспортных средств
+    /// </summary>
     public partial class FilterVehicles : Form
     {
 

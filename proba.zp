@@ -1,12 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ArrayOfVehiclesBase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <VehiclesBase xsi:type="Car">
-    <Distance>7</Distance>
-    <FuelConsumptionPerKm>6</FuelConsumptionPerKm>
+    <Distance>NaN</Distance>
+    <FuelConsumptionPerKm>40</FuelConsumptionPerKm>
+  </VehiclesBase>
+  <VehiclesBase xsi:type="HybridCar">
+    <Distance>283</Distance>
+    <FuelConsumptionPerKm>14</FuelConsumptionPerKm>
+    <CoefficientOfHybridity>7421</CoefficientOfHybridity>
+  </VehiclesBase>
+  <VehiclesBase xsi:type="Car">
+    <Distance>201</Distance>
+    <FuelConsumptionPerKm>22</FuelConsumptionPerKm>
+  </VehiclesBase>
+  <VehiclesBase xsi:type="Car">
+    <Distance>8517</Distance>
+    <FuelConsumptionPerKm>28</FuelConsumptionPerKm>
   </VehiclesBase>
   <VehiclesBase xsi:type="Helicopter">
-    <Distance>848</Distance>
-    <FuelConsumptionPerKm>11</FuelConsumptionPerKm>
-    <CargoWeight>257</CargoWeight>
+    <Distance>908</Distance>
+    <FuelConsumptionPerKm>18</FuelConsumptionPerKm>
+    <CargoWeight>8239</CargoWeight>
   </VehiclesBase>
 </ArrayOfVehiclesBase>

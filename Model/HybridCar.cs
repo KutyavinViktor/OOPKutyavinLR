@@ -14,7 +14,7 @@ namespace Model
         /// <summary>
         /// Коэффициент гибридности
         /// </summary>
-        public double СoefficientOfHybridity
+        public double CoefficientOfHybridity
         {
             get
             {
@@ -32,7 +32,7 @@ namespace Model
         /// <returns>Количество затраченного топлива.</returns>
         public override double SpentFuel()
         {
-            return СoefficientOfHybridity * Distance * FuelConsumptionPerKm;
+            return CoefficientOfHybridity * Distance * FuelConsumptionPerKm;
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Model
         {
             get
             {
-                return $"Коэффициент гибридности = {СoefficientOfHybridity}";
+                return $"Коэффициент гибридности = {CoefficientOfHybridity}";
             }
         }
     }

@@ -13,9 +13,11 @@ using View;
 namespace View
 {
     //TODO: XML
+    /// <summary>
+    /// Добавление нового транспортного средства
+    /// </summary>
     public partial class AddVehiclesForm : Form
     {
-
 
         /// <summary>
         /// Делегат для добавления заработной платы.
@@ -87,13 +89,21 @@ namespace View
             try
             {
                 //TODO: BUG
-                var vehiclesControlName =
+                if (comboVehiclesSelection.SelectedItem != null)
+                {
+                    var vehiclesControlName =
                     comboVehiclesSelection.SelectedItem.ToString();
-                var vehiclesControl = _comboBoxToUserControl[vehiclesControlName];
-                var vehicleEventArgs =
-                    new VehicleEventArgs(((IAddVehicles)vehiclesControl).AddingVehicles());
-                AddingVehicles?.Invoke(this, vehicleEventArgs);
-                DialogResult = DialogResult.OK;
+                    var vehiclesControl = _comboBoxToUserControl[vehiclesControlName];
+                    var vehicleEventArgs =
+                        new VehicleEventArgs(((IAddVehicles)vehiclesControl).AddingVehicles());
+                    AddingVehicles?.Invoke(this, vehicleEventArgs);
+                    DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    MessageBox.Show("Выберите тип транспортного средства!",
+                        "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                } 
             }
             catch (ArgumentException ex)
             {
@@ -106,6 +116,22 @@ namespace View
                    " в каждое текстовое поле.",
                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        // Метод для проверки на NaN
+        private bool IsTextBoxInputValid(string input)
+        {
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                return false; // Если строка пуста или состоит только из пробелов, считаем, что ввод некорректен.
+            }
+
+            if (!double.TryParse(input, out double result))
+            {
+                return false; // Если не удалось преобразовать введенное значение в число, считаем, что ввод некорректен.
+            }
+
+            return !double.IsNaN(result); // Если результат преобразования не NaN, считаем, что ввод корректен.
         }
 
         /// <summary>

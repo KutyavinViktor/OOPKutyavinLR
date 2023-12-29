@@ -40,6 +40,7 @@ namespace Model
             set
             {
                 _distance = CheckPositiveNumber(value);
+
             }
         }
 
@@ -80,18 +81,28 @@ namespace Model
         }
 
         /// <summary>
-        /// Проверка на отрицательные числа
+        /// Проверка на положительные числа
         /// </summary>
         /// <param name="number">путь и расход топлива</param>
         /// <returns>путь и расход топлива</returns>
+        /// <exception cref="ArgumentException">В случае введения
+        /// NaN произойдет вывод исключения</exception>
         /// <exception cref="ArgumentOutOfRangeException">В случае введения
         /// отрицательного числа произойдет вывод исключения</exception>
         public double CheckPositiveNumber(double number)
         {
-            return number < 0
-                ? throw new ArgumentOutOfRangeException("Введённые числа " +
-                    "не могут быть отрицательными!")
-                : number;
+            if (double.IsNaN(number))
+            {
+                throw new ArgumentException("Значение не может быть NaN!");
+            }
+
+            if (number < 0)
+            {
+                throw new ArgumentOutOfRangeException("Введённое число " +
+                    "не может быть отрицательным!");
+            }
+
+            return number;
         }
 
     }
