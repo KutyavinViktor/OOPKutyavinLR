@@ -58,7 +58,6 @@ namespace View
             dataGridView.RowHeadersVisible = false;
             var source = new BindingSource(vehicles, null);
             dataGridView.DataSource = source;
-
             dataGridView.DefaultCellStyle.Alignment =
                 DataGridViewContentAlignment.MiddleCenter;
             dataGridView.ColumnHeadersDefaultCellStyle.Alignment =
@@ -80,12 +79,11 @@ namespace View
         {
             var addWageForm = new AddVehiclesForm();
 
-            addWageForm.AddingVehicles += (sender, wageEventArgs) =>
+            addWageForm.AddingVehicles += (sender, vehicleEventArgs) =>
             {
-                _vehiclesList.Add(((VehicleEventArgs)wageEventArgs).VehicleValue);
+                _vehiclesList.Add(((VehicleEventArgs)vehicleEventArgs).VehicleValue);
             };
             addWageForm.ShowDialog();
-
         }
 
         /// <summary>
@@ -97,10 +95,8 @@ namespace View
         {
             if (dataGridViewFuel.SelectedCells.Count != 0)
             {
-                // Создаем список для хранения индексов строк для удаления
                 List<int> indexesToRemove = new List<int>();
 
-                // Получаем индексы выбранных строк
                 foreach (DataGridViewCell cell in dataGridViewFuel.SelectedCells)
                 {
                     if (!indexesToRemove.Contains(cell.RowIndex))
@@ -108,11 +104,15 @@ namespace View
                         indexesToRemove.Add(cell.RowIndex);
                     }
                 }
-                // Удаляем строки из коллекции _vehiclesList по индексам
+
                 foreach (int index in indexesToRemove.OrderByDescending(i => i))
                 {
                     _vehiclesList.RemoveAt(index);
                 }
+            }
+            else
+            {
+                MessageBox.Show("Позиции для удаления не выбраны!");
             }
         }
 
@@ -123,11 +123,18 @@ namespace View
         /// <param name="e"></param>
         private void ButtonReset_Click(object sender, EventArgs e)
         {
-            _vehiclesList.Clear();
+            if (dataGridViewFuel.RowCount != 0)
+            {
+                _vehiclesList.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Список транспортных средств пуст!");
+            }
         }
 
         /// <summary>
-        /// Функция случайноого транспортного средства
+        /// Функция случайного транспортного средства
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -143,15 +150,22 @@ namespace View
         /// <param name="e"></param>
         private void ButtonSearch_Click(object sender, EventArgs e)
         {
-            var newFilterWages = new FilterVehicles(_vehiclesList);
-            newFilterWages.Show();
-            newFilterWages.VehiclesFiltered += (sender, wageEventArgs) =>
+            if (dataGridViewFuel.RowCount != 0)
             {
-                dataGridViewFuel.DataSource =
-                ((VehicleListEventArgs)wageEventArgs).VehicleListValue;
-                _listVehiclesFilter = ((VehicleListEventArgs)wageEventArgs).VehicleListValue;
+                var newFilterVehicles = new FilterVehicles(_vehiclesList);
+                newFilterVehicles.ShowDialog();
+                newFilterVehicles.VehiclesFiltered += (sender, vehicleEventArgs) =>
+                {
+                    dataGridViewFuel.DataSource =
+                    ((VehicleListEventArgs)vehicleEventArgs).VehicleListValue;
+                    _listVehiclesFilter = ((VehicleListEventArgs)vehicleEventArgs).VehicleListValue;
 
-            };
+                };
+            }
+            else
+            {
+                MessageBox.Show("Список транспортных средств пуст");
+            }
         }
 
         /// <summary>
@@ -161,7 +175,14 @@ namespace View
         /// <param name="e"></param>
         private void ButtonCleanFilter_Click(object sender, EventArgs e)
         {
-            CreateTable(_vehiclesList, dataGridViewFuel);
+            if (dataGridViewFuel.RowCount != 0)
+            {
+                CreateTable(_vehiclesList, dataGridViewFuel);
+            }
+            else
+            {
+                MessageBox.Show("Фильтр не был задан!");
+            }
         }
 
         /// <summary>
@@ -189,7 +210,6 @@ namespace View
                 var path = saveFileDialog.FileName.ToString();
                 try
                 {
-                    // Указываем кодировку UTF-8
                     using (FileStream file = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
                     using (StreamWriter writer = new StreamWriter(file, Encoding.UTF8))
                     {
