@@ -47,7 +47,7 @@ namespace Model
         {
             get
             {
-                return $"Коэффициент гибридности = {CoefficientOfHybridity}";
+                return $"Коэффициент гибридности: {CoefficientOfHybridity}";
             }
         }
     }

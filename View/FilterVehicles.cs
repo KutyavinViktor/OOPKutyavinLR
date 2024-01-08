@@ -14,7 +14,7 @@ namespace View
 {
     //TODO: XML
     /// <summary>
-    /// Класс для создания фильтра транспортных средств
+    /// Фильтр транспортных средств
     /// </summary>
     public partial class FilterVehicles : Form
     {
@@ -34,11 +34,12 @@ namespace View
         /// </summary>
         public EventHandler<EventArgs> VehiclesFiltered;
 
+        private static bool _isFilterOpen = false;
+
         /// <summary>
         /// Стоимость топлива
         /// </summary>
         private double _spentFuel;
-
 
         /// <summary>
         /// Форма для фильтрации
@@ -83,7 +84,7 @@ namespace View
         }
 
         /// <summary>
-        /// Активация поля ввода зарплаты для поиска
+        /// Активация поля ввода транспортного средства для поиска
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -99,7 +100,6 @@ namespace View
                 textBoxFilter.Enabled = false;
             }
         }
-
 
         /// <summary>
         /// Кнопка поиска по созданному фильтру
@@ -154,7 +154,8 @@ namespace View
                     && !checkBoxHelicopter.Checked
                     && !checkBoxHybridCar.Checked)
                 {
-                    if (checkBoxInput.Checked && types.SpentFuelValue == _spentFuel)
+                    if (checkBoxInput.Checked && 
+                        types.SpentFuelValue == _spentFuel)
                     {
                         count++;
                         _listVehiclesFilter.Add(types);
@@ -170,8 +171,8 @@ namespace View
             }
             else
             {
-                MessageBox.Show("Стоимости топлива с такими параметрами не" +
-                    " существует", "Введите другие параметры",
+                MessageBox.Show("Транспортных средств с такими параметрами" +
+                    " не существует", "Введите другие параметры",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 eventArgs = new VehicleListEventArgs(_listVehiclesFilter);
                 return;

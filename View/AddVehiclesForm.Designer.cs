@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddVehiclesForm));
             buttonOk = new Button();
             comboVehiclesSelection = new ComboBox();
             buttonClouse = new Button();
@@ -41,18 +42,21 @@
             // 
             // buttonOk
             // 
-            buttonOk.Location = new Point(53, 286);
+            buttonOk.BackColor = SystemColors.ScrollBar;
+            buttonOk.Enabled = false;
+            buttonOk.FlatStyle = FlatStyle.Flat;
+            buttonOk.Location = new Point(59, 273);
             buttonOk.Name = "buttonOk";
             buttonOk.Size = new Size(94, 29);
             buttonOk.TabIndex = 0;
             buttonOk.Text = "OK";
-            buttonOk.UseVisualStyleBackColor = true;
+            buttonOk.UseVisualStyleBackColor = false;
             buttonOk.Click += ButtonOk;
             // 
             // comboVehiclesSelection
             // 
             comboVehiclesSelection.FormattingEnabled = true;
-            comboVehiclesSelection.Location = new Point(43, 58);
+            comboVehiclesSelection.Location = new Point(30, 50);
             comboVehiclesSelection.Name = "comboVehiclesSelection";
             comboVehiclesSelection.Size = new Size(169, 28);
             comboVehiclesSelection.TabIndex = 4;
@@ -60,17 +64,20 @@
             // 
             // buttonClouse
             // 
-            buttonClouse.Location = new Point(236, 286);
+            buttonClouse.BackColor = SystemColors.ScrollBar;
+            buttonClouse.FlatStyle = FlatStyle.Flat;
+            buttonClouse.Location = new Point(235, 273);
             buttonClouse.Name = "buttonClouse";
             buttonClouse.Size = new Size(94, 29);
             buttonClouse.TabIndex = 5;
             buttonClouse.Text = "Выход";
-            buttonClouse.UseVisualStyleBackColor = true;
+            buttonClouse.UseVisualStyleBackColor = false;
             buttonClouse.Click += ButtonClouse;
             // 
             // groupBox1
             // 
-            groupBox1.Location = new Point(21, 24);
+            groupBox1.BackColor = Color.Transparent;
+            groupBox1.Location = new Point(20, 16);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(327, 79);
             groupBox1.TabIndex = 6;
@@ -79,10 +86,13 @@
             // 
             // groupBox2
             // 
+            groupBox2.BackColor = SystemColors.Control;
+            groupBox2.BackgroundImageLayout = ImageLayout.Zoom;
             groupBox2.Controls.Add(hybridCarUserControl1);
             groupBox2.Controls.Add(helicopterUserControl1);
             groupBox2.Controls.Add(carUserControl1);
-            groupBox2.Location = new Point(21, 109);
+            groupBox2.FlatStyle = FlatStyle.Flat;
+            groupBox2.Location = new Point(30, 96);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(327, 153);
             groupBox2.TabIndex = 7;
@@ -116,16 +126,18 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackgroundImage = Properties.Resources.ocr;
-            ClientSize = new Size(387, 332);
+            ClientSize = new Size(388, 320);
             Controls.Add(buttonClouse);
             Controls.Add(comboVehiclesSelection);
             Controls.Add(buttonOk);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "AddVehiclesForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Добавление транспорта";
+            Load += VehicleLoad;
             groupBox2.ResumeLayout(false);
             ResumeLayout(false);
         }

@@ -29,7 +29,6 @@ namespace View
             }
         }
 
-
         /// <summary>
         /// Преобразование числа в double
         /// </summary>

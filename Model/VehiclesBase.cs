@@ -30,7 +30,7 @@ namespace Model
         /// <summary>
         /// Расстояние в км
         /// </summary>
-        [DisplayName("Расстояние в км")]
+        [DisplayName("Расстояние, км")]
         public double Distance
         {
             get
@@ -47,7 +47,7 @@ namespace Model
         /// <summary>
         /// Расход топлива на км
         /// </summary>
-        [DisplayName("Расход топлива на км")]
+        [DisplayName("Расход топлива, л/км")]
         public double FuelConsumptionPerKm
         {
             get
@@ -74,7 +74,7 @@ namespace Model
         /// <summary>
         /// Получение значения объёма топлива
         /// </summary>
-        [DisplayName("Объём топлива")]
+        [DisplayName("Объём топлива, л")]
         public double SpentFuelValue
         {
             get { return SpentFuel(); }

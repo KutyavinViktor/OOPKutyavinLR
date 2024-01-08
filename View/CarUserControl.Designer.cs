@@ -34,7 +34,7 @@
             textBox1 = new TextBox();
             SuspendLayout();
             // 
-            // textBox3
+            // textBoxConsumptionPerKm
             // 
             textBoxConsumptionPerKm.Location = new Point(207, 40);
             textBoxConsumptionPerKm.Name = "textBoxConsumptionPerKm";
@@ -53,9 +53,9 @@
             label1.AutoSize = true;
             label1.Location = new Point(3, 42);
             label1.Name = "label1";
-            label1.Size = new Size(160, 20);
+            label1.Size = new Size(156, 20);
             label1.TabIndex = 5;
-            label1.Text = "Расход топлива на км";
+            label1.Text = "Расход топлива, л/км";
             // 
             // textBox1
             // 
@@ -65,9 +65,9 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(125, 20);
             textBox1.TabIndex = 4;
-            textBox1.Text = "Расстояние в км";
+            textBox1.Text = "Расстояние, км";
             // 
-            // CarUserControl1
+            // CarUserControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -75,7 +75,7 @@
             Controls.Add(textBoxDistance);
             Controls.Add(label1);
             Controls.Add(textBox1);
-            Name = "CarUserControl1";
+            Name = "CarUserControl";
             Size = new Size(276, 111);
             ResumeLayout(false);
             PerformLayout();

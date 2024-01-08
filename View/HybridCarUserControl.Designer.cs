@@ -71,20 +71,20 @@
             label2.AutoSize = true;
             label2.Location = new Point(3, 42);
             label2.Name = "label2";
-            label2.Size = new Size(160, 20);
+            label2.Size = new Size(156, 20);
             label2.TabIndex = 7;
-            label2.Text = "Расход топлива на км";
+            label2.Text = "Расход топлива, л/км";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(7, 7);
+            label1.Location = new Point(3, 7);
             label1.Name = "label1";
-            label1.Size = new Size(122, 20);
+            label1.Size = new Size(113, 20);
             label1.TabIndex = 6;
-            label1.Text = "Расстояние в км";
+            label1.Text = "Расстояние, км";
             // 
-            // HybridCarUserControl1
+            // HybridCarUserControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -94,7 +94,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Name = "HybridCarUserControl1";
+            Name = "HybridCarUserControl";
             Size = new Size(276, 111);
             ResumeLayout(false);
             PerformLayout();

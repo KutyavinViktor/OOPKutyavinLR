@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FilterVehicles));
             groupBoxFilter = new GroupBox();
             textBoxFilter = new TextBox();
             buttonAdd = new Button();
@@ -85,7 +86,7 @@
             checkBoxInput.AutoSize = true;
             checkBoxInput.Location = new Point(20, 146);
             checkBoxInput.Name = "checkBoxInput";
-            checkBoxInput.Size = new Size(218, 24);
+            checkBoxInput.Size = new Size(196, 24);
             checkBoxInput.TabIndex = 3;
             checkBoxInput.Text = "Точный объём топлива";
             checkBoxInput.UseVisualStyleBackColor = true;
@@ -127,8 +128,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackgroundImage = Properties.Resources.ocr;
-            ClientSize = new Size(368, 213);
+            ClientSize = new Size(360, 213);
             Controls.Add(groupBoxFilter);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "FilterVehicles";
             StartPosition = FormStartPosition.CenterScreen;

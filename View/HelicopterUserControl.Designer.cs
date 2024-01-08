@@ -55,9 +55,9 @@
             label1.AutoSize = true;
             label1.Location = new Point(3, 42);
             label1.Name = "label1";
-            label1.Size = new Size(160, 20);
+            label1.Size = new Size(156, 20);
             label1.TabIndex = 13;
-            label1.Text = "Расход топлива на км";
+            label1.Text = "Расход топлива, л/км";
             // 
             // textBox4
             // 
@@ -67,7 +67,7 @@
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(125, 20);
             textBox4.TabIndex = 12;
-            textBox4.Text = "Расстояние в км";
+            textBox4.Text = "Расстояние, км";
             // 
             // textBox3
             // 
@@ -81,11 +81,11 @@
             label3.AutoSize = true;
             label3.Location = new Point(4, 77);
             label3.Name = "label3";
-            label3.Size = new Size(93, 20);
+            label3.Size = new Size(113, 20);
             label3.TabIndex = 10;
-            label3.Text = "Масса груза";
+            label3.Text = "Масса груза, кг";
             // 
-            // HelicopterUserControl1
+            // HelicopterUserControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -95,7 +95,7 @@
             Controls.Add(textBox4);
             Controls.Add(textBox3);
             Controls.Add(label3);
-            Name = "HelicopterUserControl1";
+            Name = "HelicopterUserControl";
             Size = new Size(276, 111);
             ResumeLayout(false);
             PerformLayout();

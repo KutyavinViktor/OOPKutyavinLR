@@ -8,7 +8,7 @@ namespace View
 {
     //TODO: XML
     /// <summary>
-    /// Класс для создания главной формы
+    /// Создание главной формы
     /// </summary>
     public partial class VehiclesForm : Form
     {
@@ -19,6 +19,11 @@ namespace View
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// Состояние фильтра
+        /// </summary>
+        private bool isFilterActive = false;
 
         /// <summary>
         /// Список транспортных средств
@@ -68,6 +73,9 @@ namespace View
                 DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView.DefaultCellStyle.WrapMode =
                 DataGridViewTriState.True;
+            dataGridView.ReadOnly = true;
+            dataGridView.SelectionMode =
+                DataGridViewSelectionMode.FullRowSelect;
         }
 
         /// <summary>
@@ -77,13 +85,14 @@ namespace View
         /// <param name="e"></param>
         private void ButtonAdd_Click(object sender, EventArgs e)
         {
-            var addWageForm = new AddVehiclesForm();
+            var addVehicleForm = new AddVehiclesForm();
 
-            addWageForm.AddingVehicles += (sender, vehicleEventArgs) =>
+            addVehicleForm.AddingVehicles += (sender, vehicleEventArgs) =>
             {
-                _vehiclesList.Add(((VehicleEventArgs)vehicleEventArgs).VehicleValue);
+                _vehiclesList.Add(((VehicleEventArgs)vehicleEventArgs).
+                    VehicleValue);
             };
-            addWageForm.ShowDialog();
+            addVehicleForm.ShowDialog();
         }
 
         /// <summary>
@@ -95,24 +104,16 @@ namespace View
         {
             if (dataGridViewFuel.SelectedCells.Count != 0)
             {
-                List<int> indexesToRemove = new List<int>();
-
-                foreach (DataGridViewCell cell in dataGridViewFuel.SelectedCells)
+                foreach (DataGridViewRow row in dataGridViewFuel.SelectedRows)
                 {
-                    if (!indexesToRemove.Contains(cell.RowIndex))
-                    {
-                        indexesToRemove.Add(cell.RowIndex);
-                    }
-                }
-
-                foreach (int index in indexesToRemove.OrderByDescending(i => i))
-                {
-                    _vehiclesList.RemoveAt(index);
+                    _vehiclesList.Remove(row.DataBoundItem as VehiclesBase);
+                    _listVehiclesFilter.Remove(row.DataBoundItem
+                        as VehiclesBase);
                 }
             }
             else
             {
-                MessageBox.Show("Позиции для удаления не выбраны!");
+                MessageBox.Show("Не выбраны позиции для удаления!");
             }
         }
 
@@ -123,9 +124,10 @@ namespace View
         /// <param name="e"></param>
         private void ButtonReset_Click(object sender, EventArgs e)
         {
-            if (dataGridViewFuel.RowCount != 0)
+            if (_vehiclesList.Count != 0)
             {
                 _vehiclesList.Clear();
+                _listVehiclesFilter.Clear();
             }
             else
             {
@@ -140,6 +142,13 @@ namespace View
         /// <param name="e"></param>
         private void ButtonRandom_Click(object sender, EventArgs e)
         {
+            if (isFilterActive)
+            {
+                MessageBox.Show("Для добавления новых транспортных средств" +
+                    " сбросьте фильтр.", "Предупреждение",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             _vehiclesList.Add(RandomVehicles.GetRandomVehicles());
         }
 
@@ -150,38 +159,48 @@ namespace View
         /// <param name="e"></param>
         private void ButtonSearch_Click(object sender, EventArgs e)
         {
-            if (dataGridViewFuel.RowCount != 0)
+            if (_vehiclesList.Count != 0)
             {
                 var newFilterVehicles = new FilterVehicles(_vehiclesList);
-                newFilterVehicles.ShowDialog();
-                newFilterVehicles.VehiclesFiltered += (sender, vehicleEventArgs) =>
+                newFilterVehicles.Show();
+                newFilterVehicles.VehiclesFiltered +=
+                    (sender, vehicleEventArgs) =>
                 {
                     dataGridViewFuel.DataSource =
                     ((VehicleListEventArgs)vehicleEventArgs).VehicleListValue;
-                    _listVehiclesFilter = ((VehicleListEventArgs)vehicleEventArgs).VehicleListValue;
-
+                    _listVehiclesFilter =
+                    ((VehicleListEventArgs)vehicleEventArgs).VehicleListValue;
+                    isFilterActive = true;
                 };
+
+                newFilterVehicles.FormClosed +=
+                    (filterSender, filterEventArgs) =>
+                {
+                    buttonFilter.Enabled = true;
+                };
+                buttonFilter.Enabled = false;
             }
             else
             {
-                MessageBox.Show("Список транспортных средств пуст");
+                MessageBox.Show("Добавьте транспортные средства!");
             }
         }
 
         /// <summary>
-        /// Сброс найтроек фильтра
+        /// Сброс настроек фильтра
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ButtonCleanFilter_Click(object sender, EventArgs e)
         {
-            if (dataGridViewFuel.RowCount != 0)
+            if (isFilterActive == true)
             {
                 CreateTable(_vehiclesList, dataGridViewFuel);
+                isFilterActive = false;
             }
             else
             {
-                MessageBox.Show("Фильтр не был задан!");
+                MessageBox.Show("Фильтр очищен!");
             }
         }
 
@@ -210,8 +229,12 @@ namespace View
                 var path = saveFileDialog.FileName.ToString();
                 try
                 {
-                    using (FileStream file = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
-                    using (StreamWriter writer = new StreamWriter(file, Encoding.UTF8))
+                    using (FileStream file = new FileStream(path,
+                                                            FileMode.Create,
+                                                            FileAccess.Write,
+                                                            FileShare.None))
+                    using (StreamWriter writer = new StreamWriter(file,
+                                                              Encoding.UTF8))
                     {
                         _serializer.Serialize(writer, _vehiclesList);
                     }
@@ -222,8 +245,8 @@ namespace View
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Ошибка при сохранении файла: {ex.Message}",
-                        "Ошибка сохранения",
+                    MessageBox.Show($"Ошибка при сохранении " +
+                        $"файла: {ex.Message}", "Ошибка сохранения",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -244,7 +267,7 @@ namespace View
             if (openFileDialog.ShowDialog() != DialogResult.OK) return;
 
             var path = openFileDialog.FileName.ToString();
-            
+
             try
             {
                 using (var file = new StreamReader(path))

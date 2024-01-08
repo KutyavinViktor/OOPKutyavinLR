@@ -48,7 +48,7 @@ namespace Model
         {
             get
             {
-                return $"Масса груза = {CargoWeight}";
+                return $"Масса груза: {CargoWeight} кг";
             }
         }
     }

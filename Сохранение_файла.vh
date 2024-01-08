@@ -1,27 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ArrayOfVehiclesBase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <VehiclesBase xsi:type="HybridCar">
-    <Distance>453</Distance>
-    <FuelConsumptionPerKm>18</FuelConsumptionPerKm>
-    <CoefficientOfHybridity>3</CoefficientOfHybridity>
+  <VehiclesBase xsi:type="Helicopter">
+    <Distance>20</Distance>
+    <FuelConsumptionPerKm>20</FuelConsumptionPerKm>
+    <CargoWeight>567</CargoWeight>
   </VehiclesBase>
   <VehiclesBase xsi:type="Car">
-    <Distance>920</Distance>
-    <FuelConsumptionPerKm>21</FuelConsumptionPerKm>
-  </VehiclesBase>
-  <VehiclesBase xsi:type="Helicopter">
-    <Distance>7773</Distance>
-    <FuelConsumptionPerKm>65</FuelConsumptionPerKm>
-    <CargoWeight>715</CargoWeight>
-  </VehiclesBase>
-  <VehiclesBase xsi:type="Helicopter">
-    <Distance>2294</Distance>
-    <FuelConsumptionPerKm>43</FuelConsumptionPerKm>
-    <CargoWeight>368</CargoWeight>
+    <Distance>894</Distance>
+    <FuelConsumptionPerKm>6</FuelConsumptionPerKm>
   </VehiclesBase>
   <VehiclesBase xsi:type="HybridCar">
-    <Distance>335</Distance>
-    <FuelConsumptionPerKm>11</FuelConsumptionPerKm>
-    <CoefficientOfHybridity>9</CoefficientOfHybridity>
+    <Distance>785</Distance>
+    <FuelConsumptionPerKm>15</FuelConsumptionPerKm>
+    <CoefficientOfHybridity>8</CoefficientOfHybridity>
+  </VehiclesBase>
+  <VehiclesBase xsi:type="HybridCar">
+    <Distance>319</Distance>
+    <FuelConsumptionPerKm>21</FuelConsumptionPerKm>
+    <CoefficientOfHybridity>6</CoefficientOfHybridity>
+  </VehiclesBase>
+  <VehiclesBase xsi:type="HybridCar">
+    <Distance>834</Distance>
+    <FuelConsumptionPerKm>27</FuelConsumptionPerKm>
+    <CoefficientOfHybridity>2</CoefficientOfHybridity>
+  </VehiclesBase>
+  <VehiclesBase xsi:type="Helicopter">
+    <Distance>4687</Distance>
+    <FuelConsumptionPerKm>38</FuelConsumptionPerKm>
+    <CargoWeight>851</CargoWeight>
   </VehiclesBase>
 </ArrayOfVehiclesBase>

@@ -20,7 +20,7 @@ namespace View
     {
 
         /// <summary>
-        /// Делегат для добавления заработной платы.
+        /// Делегат для добавления транспортного средства.
         /// </summary>
         public EventHandler<EventArgs> AddingVehicles;
 
@@ -44,11 +44,11 @@ namespace View
             comboVehiclesSelection.DropDownStyle =
                 System.Windows.Forms.ComboBoxStyle.DropDownList;
 
-            string[] typeVehicles = { "Автомобиль", "Вертолёт",
-                "Автомобиль гибрид" };
+            string[] typeVehicles = { "Автомобиль",
+                                      "Вертолёт",
+                                      "Автомобиль гибрид" };
 
-            comboVehiclesSelection.Items.AddRange(new string[] {
-            typeVehicles[0], typeVehicles[1], typeVehicles[2]});
+            comboVehiclesSelection.Items.AddRange(typeVehicles);
 
             _comboBoxToUserControl = new Dictionary<string, UserControl>()
             {
@@ -66,8 +66,10 @@ namespace View
         /// <param name="e"></param>
         private void ComboBoxVehiclesSelection(object sender, EventArgs e)
         {
-            string vehicleType = comboVehiclesSelection.SelectedItem.ToString();
-            foreach (var (vehicleValue, userControlTmp) in _comboBoxToUserControl)
+            string vehicleType = 
+                comboVehiclesSelection.SelectedItem.ToString();
+            foreach (var (vehicleValue, userControlTmp) in 
+                _comboBoxToUserControl)
             {
                 userControlTmp.Visible = false;
                 if (vehicleType == vehicleValue)
@@ -89,21 +91,15 @@ namespace View
             try
             {
                 //TODO: BUG
-                if (comboVehiclesSelection.SelectedItem != null)
-                {
-                    var vehiclesControlName =
+                var vehicleControlName =
                     comboVehiclesSelection.SelectedItem.ToString();
-                    var vehiclesControl = _comboBoxToUserControl[vehiclesControlName];
-                    var vehicleEventArgs =
-                        new VehicleEventArgs(((IAddVehicles)vehiclesControl).AddingVehicles());
-                    AddingVehicles?.Invoke(this, vehicleEventArgs);
-                    DialogResult = DialogResult.OK;
-                }
-                else
-                {
-                    MessageBox.Show("Выберите тип транспортного средства!",
-                        "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                var vehicleControl = 
+                    _comboBoxToUserControl[vehicleControlName];
+                var vehicleEventArgs =
+                    new VehicleEventArgs(((IAddVehicles)vehicleControl).
+                    AddingVehicles());
+                AddingVehicles?.Invoke(this, vehicleEventArgs);
+                DialogResult = DialogResult.OK;
             }
             catch (ArgumentException ex)
             {
@@ -111,27 +107,12 @@ namespace View
             }
             catch
             {
-                MessageBox.Show("Введено некорректное значение!\n" +
+                MessageBox.Show("Введено некорректное значение либо ничего" +
+                    " не введено!\n" +
                    "Введите одно положительное целое или десятичное число" +
                    " в каждое текстовое поле.",
                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        // Метод для проверки на NaN
-        private bool IsTextBoxInputValid(string input)
-        {
-            if (string.IsNullOrWhiteSpace(input))
-            {
-                return false; // Если строка пуста или состоит только из пробелов, считаем, что ввод некорректен.
-            }
-
-            if (!double.TryParse(input, out double result))
-            {
-                return false; // Если не удалось преобразовать введенное значение в число, считаем, что ввод некорректен.
-            }
-
-            return !double.IsNaN(result); // Если результат преобразования не NaN, считаем, что ввод корректен.
         }
 
         /// <summary>
@@ -149,7 +130,7 @@ namespace View
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void SalaryLoad(object sender, EventArgs e)
+        private void VehicleLoad(object sender, EventArgs e)
         {
             carUserControl1.Visible = false;
             helicopterUserControl1.Visible = false;
