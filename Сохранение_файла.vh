@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ArrayOfVehiclesBase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <VehiclesBase xsi:type="Helicopter">
-    <Distance>20</Distance>
+    <Distance>2кк</Distance>
     <FuelConsumptionPerKm>20</FuelConsumptionPerKm>
     <CargoWeight>567</CargoWeight>
   </VehiclesBase>

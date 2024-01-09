@@ -282,7 +282,7 @@ namespace View
                     "Загрузка завершена",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Не удалось загрузить файл.\n" +
                     "Файл повреждён или не соответствует формату.\n",
