@@ -12,7 +12,7 @@ using View;
 
 namespace View
 {
-    //TODO: XML
+    //TODO(+): XML
     /// <summary>
     /// Добавление нового транспортного средства
     /// </summary>
@@ -90,7 +90,7 @@ namespace View
         {
             try
             {
-                //TODO: BUG
+                //TODO(+): BUG
                 var vehicleControlName =
                     comboVehiclesSelection.SelectedItem.ToString();
                 var vehicleControl = 

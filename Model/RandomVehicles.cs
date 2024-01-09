@@ -1,6 +1,9 @@
 
 namespace Model
 {
+    /// <summary>
+    /// Создание случайных транспортных средств
+    /// </summary>
     public class RandomVehicles
     {
         /// <summary>
