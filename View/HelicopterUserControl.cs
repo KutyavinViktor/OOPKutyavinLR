@@ -11,14 +11,12 @@ using System.Windows.Forms;
 
 namespace View
 {
-    //TODO: XML
     /// <summary>
     /// Добавление параметров вертолёта
     /// </summary>
     public partial class HelicopterUserControl : UserControl, IAddVehicles
     {
 
-        //TODO: XML
         /// <summary>
         /// Конструктор
         /// </summary>

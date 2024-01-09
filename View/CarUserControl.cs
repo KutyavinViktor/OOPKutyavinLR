@@ -10,14 +10,12 @@ using System.Windows.Forms;
 using Model;
 namespace View
 {
-    //TODO: XML
     /// <summary>
     /// Добавление параметров автомобиля
     /// </summary>
     public partial class CarUserControl : UserControl, IAddVehicles
     {
 
-        //TODO: XML
         /// <summary>
         /// Конструктор
         /// </summary>
