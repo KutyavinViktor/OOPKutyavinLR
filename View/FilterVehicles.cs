@@ -12,7 +12,6 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace View
 {
-    //TODO(+): XML
     /// <summary>
     /// Фильтр транспортных средств
     /// </summary>

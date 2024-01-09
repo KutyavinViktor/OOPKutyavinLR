@@ -11,13 +11,11 @@ using System.Windows.Forms;
 
 namespace View
 {
-    //TODO: XML
     /// <summary>
     /// Добавление параметров гибрида
     /// </summary>
     public partial class HybridCarUserControl : UserControl, IAddVehicles
     {
-        //TODO: XML
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -35,6 +33,7 @@ namespace View
         {
             Checks.CheckInput(e);
         }
+
         /// <summary>
         /// Метод добавления параметров транспортного средства
         /// </summary>

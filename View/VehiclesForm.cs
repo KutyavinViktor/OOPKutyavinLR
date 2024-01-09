@@ -6,7 +6,6 @@ using System.Xml.Serialization;
 using Model;
 namespace View
 {
-    //TODO(+): XML
     /// <summary>
     /// Создание главной формы
     /// </summary>
